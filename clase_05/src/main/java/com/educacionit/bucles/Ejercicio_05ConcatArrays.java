@@ -12,19 +12,19 @@ public class Ejercicio_05ConcatArrays {
         System.out.println("Array Concatenado: " + new String(arrayResuelto));
     }
     
-    public static char[] concatenarArrays(char[] arr1, int[] arr2) {
+    public static char[] concatenarArrays(char[] array1, int[] array2) {
         
-        int longitudTotal = arr1.length + arr2.length;
+        int longitudTotal = array1.length + array2.length;
        
         char[] arrayResuelto = new char[longitudTotal];
        
-        for (int i = 0; i < arr1.length; i++) {
-            arrayResuelto[i] = arr1[i];
+        for (int i = 0; i < array1.length; i++) {
+            arrayResuelto[i] = array1[i];
         }
 
        
-        for (int i = 0; i < arr2.length; i++) {
-            arrayResuelto[arr1.length + i] = (char) arr2[i];
+        for (int i = 0; i < array2.length; i++) {
+            arrayResuelto[array1.length + i] = (char) array2[i];
         }
 
         return arrayResuelto;
