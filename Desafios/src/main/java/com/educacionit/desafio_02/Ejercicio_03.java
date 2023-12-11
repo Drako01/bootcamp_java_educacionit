@@ -1,4 +1,4 @@
-package com.educacionit;
+package com.educacionit.desafio_02;
 
 public class Ejercicio_03 {
 
