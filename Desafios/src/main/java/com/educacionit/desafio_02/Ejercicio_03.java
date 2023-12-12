@@ -9,7 +9,7 @@ public class Ejercicio_03 {
 
         
         int resultadoSuma = n1 + n2 + n3;
-        int resultadoPromedio = resultadoSuma / 3;
+        float resultadoPromedio = resultadoSuma / 3;
         int resultadoMultiplicacion = n2 % n1;
         
 

@@ -21,7 +21,8 @@ public class Ejercicio_01 {
         System.out.println("Semanas: " + semanas);
         System.out.println("Días: " + dias);
         System.out.println("Horas: " + horas);
-
+        
+        scanner.close();
 	}
 
 }
