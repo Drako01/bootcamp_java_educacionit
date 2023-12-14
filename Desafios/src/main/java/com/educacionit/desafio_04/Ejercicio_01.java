@@ -12,8 +12,8 @@ public class Ejercicio_01 {
 		 * ingreso sea incorrecto
 		 */
 		
-		String usuarioCorrecto = "usuario";
-		String contrasenaCorrecta = "contrasenia";
+		String usuarioCorrecto = "Usuario";
+		String contrasenaCorrecta = "Contrasenia";
 		
 		Scanner scanner = new Scanner(System.in);
 
@@ -22,7 +22,11 @@ public class Ejercicio_01 {
 
 		System.out.print("Ingrese su contraseña: ");
 		String contrasenaIngresada = scanner.nextLine();
-		
+		/*
+		 * Aca Utilizo el método equals para que compare exactamente el texto ingresado
+		 * por el usuario con el que esta guardado en la variable. Aca es importante que
+		 * el usuario respete las mayusculas y las minusculas.
+		 */
 		if (usuarioCorrecto.equals(usuarioIngresado) && contrasenaCorrecta.equals(contrasenaIngresada)) {
 			System.out.println("Bienvenido al Sistema");
 		} else {
