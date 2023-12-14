@@ -1,0 +1,33 @@
+package com.educacionit.desafio_04;
+
+import java.util.Scanner;
+
+public class Ejercicio_02 {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.print("Ingrese la temperatura actual: ");
+		double temperatura = scanner.nextDouble();
+
+		System.out.print("Ingrese el estado del tiempo (Soleado, Lluvia, Nieve): ");
+		String tiempo = scanner.next();
+
+		if (temperatura > 25 && tiempo.equalsIgnoreCase("Soleado")) {
+			System.out.println("Puedes caminar y tomar sol.");
+		} else if (temperatura > 15 && temperatura <= 25 && tiempo.equalsIgnoreCase("Soleado")) {
+			System.out.println("Puedes caminar.");
+		} else if (temperatura <= 15 && tiempo.equalsIgnoreCase("Soleado")) {
+			System.out.println("Puedes caminar con campera.");
+		} else if (temperatura < 10 && tiempo.equalsIgnoreCase("Lluvia")) {
+			System.out.println("Debes quedarte en casa o salir con paraguas y campera.");
+		} else if (temperatura < 10 && tiempo.equalsIgnoreCase("Nieve")) {
+			System.out.println("Puedes esquiar.");
+		} else {
+			System.out.println("No se proporcionaron sugerencias para este pronóstico.");
+		}
+
+		scanner.close();
+	}
+
+}
