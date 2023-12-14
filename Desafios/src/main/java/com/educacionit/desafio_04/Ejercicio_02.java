@@ -13,6 +13,10 @@ public class Ejercicio_02 {
 		System.out.print("Ingrese el estado del tiempo (Soleado, Lluvia, Nieve): ");
 		String tiempo = scanner.next();
 
+		/* A diferencia del Ejercicio 01, aca utilice el método equalsIgnoreCase
+		   para que al ingresar un texto por teclado, ignore si esta en mayusculas o minusculas
+		   Ejemplo: Si ingreso Soleado o SOLEADO o soleado, para este Programa va a ser lo mismo.
+		 */
 		if (temperatura > 25 && tiempo.equalsIgnoreCase("Soleado")) {
 			System.out.println("Puedes caminar y tomar sol.");
 		} else if (temperatura > 15 && temperatura <= 25 && tiempo.equalsIgnoreCase("Soleado")) {
