@@ -2,6 +2,24 @@ package com.educacionit.desafio_04;
 
 import java.util.Scanner;
 
+class Usuario {
+    private String usuarioCorrecto;
+    private String contrasenaCorrecta;
+
+    public Usuario(String usuarioCorrecto, String contrasenaCorrecta) {
+        this.usuarioCorrecto = usuarioCorrecto;
+        this.contrasenaCorrecta = contrasenaCorrecta;
+    }
+    /*
+	 * Aca Utilizo el método equals para que compare exactamente el texto ingresado
+	 * por el usuario con el que esta guardado en la variable. Aca es importante que
+	 * el usuario respete las mayusculas y las minusculas.
+	 */
+    public boolean autenticar(String usuario, String contrasena) {
+        return usuarioCorrecto.equals(usuario) && contrasenaCorrecta.equals(contrasena);
+    }
+}
+
 public class Ejercicio_01 {
 
 	public static void main(String[] args) {
@@ -11,9 +29,7 @@ public class Ejercicio_01 {
 		 * "Bienvenido al Sistema" o "Credenciales Incorrectas" en caso de que el
 		 * ingreso sea incorrecto
 		 */
-		
-		String usuarioCorrecto = "Usuario";
-		String contrasenaCorrecta = "Contrasenia";
+		Usuario usuario = new Usuario("Usuario", "Contrasenia");
 		
 		Scanner scanner = new Scanner(System.in);
 
@@ -22,16 +38,12 @@ public class Ejercicio_01 {
 
 		System.out.print("Ingrese su contraseña: ");
 		String contrasenaIngresada = scanner.nextLine();
-		/*
-		 * Aca Utilizo el método equals para que compare exactamente el texto ingresado
-		 * por el usuario con el que esta guardado en la variable. Aca es importante que
-		 * el usuario respete las mayusculas y las minusculas.
-		 */
-		if (usuarioCorrecto.equals(usuarioIngresado) && contrasenaCorrecta.equals(contrasenaIngresada)) {
-			System.out.println("Bienvenido al Sistema");
-		} else {
-			System.out.println("Credenciales Incorrectas");
-		}
+		
+		if (usuario.autenticar(usuarioIngresado, contrasenaIngresada)) {
+            System.out.println("Bienvenido al Sistema");
+        } else {
+            System.out.println("Credenciales Incorrectas");
+        }
 
 		scanner.close();
 
