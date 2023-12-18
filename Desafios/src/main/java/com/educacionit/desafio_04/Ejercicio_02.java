@@ -2,39 +2,34 @@ package com.educacionit.desafio_04;
 
 import java.util.Scanner;
 
-
 class PronosticoTiempo {
-    private double temperatura;
-    private String estadoTiempo;
+	private double temperatura;
+	private String estadoTiempo;
 
-    public PronosticoTiempo(double temperatura, String estadoTiempo) {
-        this.temperatura = temperatura;
-        this.estadoTiempo = estadoTiempo;
-    }
+	public PronosticoTiempo(double temperatura, String estadoTiempo) {
+		this.temperatura = temperatura;
+		this.estadoTiempo = estadoTiempo;
+	}
 
-    public double getTemperatura() {
-        return temperatura;
-    }
+	public double getTemperatura() {
+		return temperatura;
+	}
 
-    public String getEstadoTiempo() {
-        return estadoTiempo;
-    }
+	public String getEstadoTiempo() {
+		return estadoTiempo;
+	}
 }
 
-public class Ejercicio_02 {
+class SugerenciasTiempo {
 
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-
-		System.out.print("Ingrese la temperatura actual: ");
-		double temperatura = scanner.nextDouble();
-
-		System.out.print("Ingrese el estado del tiempo (Soleado, Lluvia, Nieve): ");
-		String tiempo = scanner.next();
-
-		/* A diferencia del Ejercicio 01, aca utilice el método equalsIgnoreCase
-		   para que al ingresar un texto por teclado, ignore si esta en mayusculas o minusculas
-		   Ejemplo: Si ingreso Soleado o SOLEADO o soleado, para este Programa va a ser lo mismo.
+	public static void obtenerSugerencias(PronosticoTiempo pronostico) {
+		double temperatura = pronostico.getTemperatura();
+		String tiempo = pronostico.getEstadoTiempo();
+		/*
+		 * A diferencia del Ejercicio 01, aca utilice el método equalsIgnoreCase para
+		 * que al ingresar un texto por teclado, ignore si esta en mayusculas o
+		 * minusculas Ejemplo: Si ingreso Soleado o SOLEADO o soleado, para este
+		 * Programa va a ser lo mismo.
 		 */
 		if (temperatura > 25 && tiempo.equalsIgnoreCase("Soleado")) {
 			System.out.println("Puedes caminar y tomar sol.");
@@ -47,9 +42,27 @@ public class Ejercicio_02 {
 		} else if (temperatura < 10 && tiempo.equalsIgnoreCase("Nieve")) {
 			System.out.println("Puedes esquiar.");
 		} else {
-			System.out.println("No se proporcionaron sugerencias para este pronóstico.");
+			System.out.println("No se proporcionaron sugerencias para el pronóstico dado.");
 		}
+	}
+}
 
+public class Ejercicio_02 {
+
+	public static void main(String[] args) {
+		
+		Scanner scanner = new Scanner(System.in);
+
+		System.out.print("Ingrese la temperatura actual: ");
+		double temperatura = scanner.nextDouble();
+
+		System.out.print("Ingrese el estado del tiempo (Soleado, Lluvia, Nieve): ");
+		String tiempo = scanner.next();
+		
+		PronosticoTiempo pronostico = new PronosticoTiempo(temperatura, tiempo);
+		
+		SugerenciasTiempo.obtenerSugerencias(pronostico);
+		
 		scanner.close();
 	}
 
