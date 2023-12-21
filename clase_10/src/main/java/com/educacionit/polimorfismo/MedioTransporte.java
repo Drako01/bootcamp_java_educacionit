@@ -1,12 +1,11 @@
 package com.educacionit.polimorfismo;
 
-public abstract class MedioTransporte {
+public abstract class MedioTransporte implements IDesplazamiento{
 
 	private String nombre;
 	public MedioTransporte() {
 		super();
 	}
-	public abstract void despazarse();
 	
 	public String getNombre() {
 		return nombre;

@@ -6,5 +6,8 @@ public final class Auto extends MedioTransporte {
 	public void despazarse() {
 		System.out.println("Soy Auto y me desplazo");
 	}
+	public void unMetodoDeLaClaseAuto() {
+		System.out.println("Tengo 4 Puertas y soy un auto");
+	}
 	
 }
