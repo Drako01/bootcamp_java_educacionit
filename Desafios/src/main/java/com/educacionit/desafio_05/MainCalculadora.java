@@ -1,16 +1,19 @@
 package com.educacionit.desafio_05;
-//Ejercicio_01
+
 import java.util.Scanner;
 
-public class MainCalculadora {
+public class MainCalculadora extends CalculadoraNumeros {
 
+    public MainCalculadora() {
+        super();
+    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         CalculadoraNumeros calculadora = new CalculadoraNumeros();
 
         boolean salir = false;
-
+        
         while (!salir) {
             System.out.print("Para culminar escriba 0 de lo contrario escriba cualquier numero: ");
 
@@ -23,9 +26,8 @@ public class MainCalculadora {
                     calculadora.procesarNumero(numero);
                 }
             } else {
+                scanner.next();
                 System.out.println("Error: Ingresa un número entero válido.");
-                scanner.next(); 
-                
             }
         }
 
