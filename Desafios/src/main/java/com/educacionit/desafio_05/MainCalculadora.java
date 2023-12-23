@@ -20,6 +20,12 @@ public class MainCalculadora extends CalculadoraNumeros {
 
                 calculadora.procesarNumero(numero);
 
+                /*
+                 * NumberFormatException me permite identificar si el Usuario ingreso un 
+                 * caracter invalido o vacio. Solo se permiten Numeros Enteros (En este caso) 
+                 * En el caso que no ingrese nada o ingrese un caracter invalido envia el 
+                 * mensaje de Error.               
+                */
             } catch (NumberFormatException e) {
                 System.out.println("Error: Ingresa un número entero válido.");
             }

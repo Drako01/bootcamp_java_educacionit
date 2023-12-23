@@ -18,11 +18,7 @@ public class MainOracion extends AnalizadorOracion {
 
         AnalizadorOracion analizador = new AnalizadorOracion(oracion);
 
-        try {
-            analizador.encontrarCaracterMasRepetido();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        analizador.encontrarCaracterMasRepetido();
 
         scanner.close();
     }

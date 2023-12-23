@@ -19,13 +19,21 @@ class AnalizadorOracion {
             oracionSinEspacios = oracion.replace(" ", "");
             scanner.close();
         }
+
+        char caracterMasRepetido = encontrarCaracterMasRepetidoEnOracion(oracionSinEspacios);
+        int numeroDeVeces = contarRepeticiones(caracterMasRepetido, oracionSinEspacios);
         
+        System.out.println("El carácter [" + caracterMasRepetido + "] se Repite " +
+        		numeroDeVeces + " veces.");
+    }
+
+    private char encontrarCaracterMasRepetidoEnOracion(String oracion) {
         char caracterMasRepetido = '\0';
         int maxRepeticiones = 0;
 
-        for (int i = 0; i < oracionSinEspacios.length(); i++) {
-            char caracterActual = oracionSinEspacios.charAt(i);
-            int repeticionesActual = contarRepeticiones(caracterActual, oracionSinEspacios);
+        for (int i = 0; i < oracion.length(); i++) {
+            char caracterActual = oracion.charAt(i);
+            int repeticionesActual = contarRepeticiones(caracterActual, oracion);
 
             if (repeticionesActual > maxRepeticiones) {
                 maxRepeticiones = repeticionesActual;
@@ -33,7 +41,7 @@ class AnalizadorOracion {
             }
         }
 
-        System.out.println("El carácter [" + caracterMasRepetido + "] se Repite " + maxRepeticiones + " veces.");
+        return caracterMasRepetido;
     }
 
     private int contarRepeticiones(char caracter, String oracion) {
