@@ -1,6 +1,5 @@
 package com.educacionit.desafio_05;
 
-
 public class CalculadoraNumeros {
     private int suma;
     private int numeroMayor;

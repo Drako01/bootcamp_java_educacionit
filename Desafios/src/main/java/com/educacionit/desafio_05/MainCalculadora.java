@@ -2,40 +2,37 @@ package com.educacionit.desafio_05;
 
 import java.util.Scanner;
 
-public class MainCalculadora extends CalculadoraNumeros {
+public class MainCalculadora {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         CalculadoraNumeros calculadora = new CalculadoraNumeros();
 
-        while (true) {
-            try {
-                System.out.print("Para culminar escriba 0 de lo contrario escriba cualquier numero: ");
-                int numero = Integer.parseInt(scanner.nextLine());
+        boolean salir = false;
+
+        while (!salir) {
+            System.out.print("Para culminar escriba 0 de lo contrario escriba cualquier numero: ");
+
+            if (scanner.hasNextInt()) {
+                int numero = scanner.nextInt();
 
                 if (numero == 0) {
-                    break;
+                    salir = true;
+                } else {
+                    calculadora.procesarNumero(numero);
                 }
-
-                calculadora.procesarNumero(numero);
-
-                /*
-                 * NumberFormatException me permite identificar si el Usuario ingreso un 
-                 * caracter invalido o vacio. Solo se permiten Numeros Enteros (En este caso) 
-                 * En el caso que no ingrese nada o ingrese un caracter invalido envia el 
-                 * mensaje de Error.               
-                */
-            } catch (NumberFormatException e) {
+            } else {
                 System.out.println("Error: Ingresa un número entero válido.");
+                scanner.next(); 
+                
             }
         }
 
         System.out.println("\nLa Suma Total es: " + calculadora.obtenerSuma());
         System.out.println("El Número mayor ingresado: " + calculadora.obtenerNumeroMayor());
         System.out.println("El Número menor ingresado: " + calculadora.obtenerNumeroMenor());
-        
+
         scanner.close();
     }
-
 }
