@@ -1,5 +1,5 @@
 package com.educacionit.desafio_05;
-
+//Ejercicio_02
 import java.util.Scanner;
 
 class AnalizadorOracion {

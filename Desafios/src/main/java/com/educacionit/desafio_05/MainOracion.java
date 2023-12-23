@@ -1,5 +1,5 @@
 package com.educacionit.desafio_05;
-
+//Ejercicio_02
 import java.util.Scanner;
 
 public class MainOracion extends AnalizadorOracion {
@@ -16,9 +16,9 @@ public class MainOracion extends AnalizadorOracion {
             oracion = scanner.nextLine();
         }
 
-        AnalizadorOracion analizador = new AnalizadorOracion(oracion);
+        AnalizadorOracion analizadorOracion = new AnalizadorOracion(oracion);
 
-        analizador.encontrarCaracterMasRepetido();
+        analizadorOracion.encontrarCaracterMasRepetido();
 
         scanner.close();
     }
