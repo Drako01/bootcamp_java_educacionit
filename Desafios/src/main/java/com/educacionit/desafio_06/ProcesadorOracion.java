@@ -29,12 +29,14 @@ public class ProcesadorOracion {
         System.out.println(hayRepetidas ? "Hay palabras repetidas" : "No hay palabras repetidas");
     }
 
+    
     public void ordenarPalabrasAscendente() {
         String[] palabras = oracion.split("\\s+");
         Arrays.sort(palabras);
         System.out.println("Palabras ordenadas de forma ascendente: \n" + Arrays.toString(palabras));
     }
 
+    
     public void ordenarLetras() {
         char[] letras = oracion.replaceAll("\\s", "").toCharArray();
         Arrays.sort(letras);

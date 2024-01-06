@@ -7,7 +7,6 @@ public class MainProcesadorOracion extends ProcesadorOracion {
 	public MainProcesadorOracion(String oracion) {
 		super(oracion);
 	}
-
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
