@@ -1,36 +1,71 @@
 package com.educacionitBD;
 
 import java.sql.SQLException;
+import java.util.Scanner;
 
 public class TestDBManager {
 
-	public static void main(String[] args) throws SQLException {
-		
-		DBManager dbManager = new DBManager();
+    public static void main(String[] args) throws SQLException {
 
-		dbManager.conectar();
-		
-		dbManager.verificarYCrearTabla();
+        DBManager dbManager = new DBManager();
+        Scanner scanner = new Scanner(System.in);
 
-		dbManager.mostrarAlumnos();
+        try {
+            dbManager.conectar();
+            dbManager.verificarYCrearTabla();
 
-		Alumno alumno = new Alumno( 1, "Alejandro", 47, "Matematica");//
-		dbManager.insertarAlumno(alumno);
-		
-		dbManager.mostrarAlumnos();
-		
-		alumno.setEdad(48);
-		alumno.setEspecialidad("Sistemas");
-		dbManager.modificarAlumno(alumno);
-		
-		dbManager.mostrarAlumnos();
-		
-		dbManager.eliminarAlumno(1);
-		
-		dbManager.mostrarAlumnos();
+            System.out.println("Mostrando Alumnos:");
+            dbManager.mostrarAlumnos();
 
-		dbManager.closeConnection();
+            System.out.println("Ingrese los datos del nuevo alumno:");
+            System.out.print("Legajo: ");
+            int legajo = scanner.nextInt();
+            scanner.nextLine();
 
-	}
+            System.out.print("Nombre: ");
+            String nombre = scanner.nextLine();
 
+            System.out.print("Edad: ");
+            int edad = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.print("Especialidad: ");
+            String especialidad = scanner.nextLine();
+
+            Alumno nuevoAlumno = new Alumno(legajo, nombre, edad, especialidad);
+            dbManager.insertarAlumno(nuevoAlumno);
+
+            System.out.println("Mostrando Alumnos después de la inserción:");
+            dbManager.mostrarAlumnos();
+
+            System.out.println("Modificando el alumno con legajo " + legajo + ":");
+            System.out.print("Nuevo nombre: ");
+            String nuevoNombre = scanner.nextLine();
+
+            System.out.print("Nueva edad: ");
+            int nuevaEdad = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.print("Nueva especialidad: ");
+            String nuevaEspecialidad = scanner.nextLine();
+
+            nuevoAlumno.setNombre(nuevoNombre);
+            nuevoAlumno.setEdad(nuevaEdad);
+            nuevoAlumno.setEspecialidad(nuevaEspecialidad);
+            dbManager.modificarAlumno(nuevoAlumno);
+
+            System.out.println("Mostrando Alumnos después de la modificación:");
+            dbManager.mostrarAlumnos();
+
+            System.out.print("Ingrese el legajo del alumno a eliminar: ");
+            int legajoEliminar = scanner.nextInt();
+            dbManager.eliminarAlumno(legajoEliminar);
+
+            System.out.println("Mostrando Alumnos después de la eliminación:");
+            dbManager.mostrarAlumnos();
+        } finally {
+            scanner.close();
+            dbManager.closeConnection();
+        }
+    }
 }
