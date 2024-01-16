@@ -1,4 +1,4 @@
-package com.educacionitBD;
+package com.educacionit.dbmanager;
 
 public class Alumno {
 	

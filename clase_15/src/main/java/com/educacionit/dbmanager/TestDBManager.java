@@ -1,4 +1,4 @@
-package com.educacionitBD;
+package com.educacionit.dbmanager;
 
 import java.util.Scanner;
 
