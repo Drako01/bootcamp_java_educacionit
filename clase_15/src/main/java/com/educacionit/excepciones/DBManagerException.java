@@ -1,4 +1,4 @@
-package com.educacionitBD;
+package com.educacionit.excepciones;
 
 public class DBManagerException extends Exception {
 
@@ -21,8 +21,7 @@ public class DBManagerException extends Exception {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DBManagerException(String message, Throwable cause, boolean enableSuppression,
-			boolean writableStackTrace) {
+	public DBManagerException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
