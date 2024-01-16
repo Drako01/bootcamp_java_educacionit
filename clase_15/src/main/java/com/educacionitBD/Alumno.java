@@ -82,6 +82,5 @@ public class Alumno {
 		return "Alumno [legajo=" + legajo + ", nombre=" + nombre + ", edad=" + edad + ", especialidad=" + especialidad
 				+ "]";
 	}
-
 	
 }
