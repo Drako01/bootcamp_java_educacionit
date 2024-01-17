@@ -48,7 +48,7 @@ Agradezco a la comunidad de programadores y a los instructores del Bootcamp en E
 ---
 
 <h3 align="center">
-Alumno: Alejandro Daniel Di Stefano
+Alejandro Daniel Di Stefano
 </h3>
 
 
