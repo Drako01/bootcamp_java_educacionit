@@ -288,4 +288,5 @@ public class DBManager {
 			System.out.println("Bloque de Cerrar conexión Finalizado");
 		}
 	}
+
 }
