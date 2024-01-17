@@ -65,7 +65,12 @@ public class TestDBManager {
 
 		} catch (DBManagerException e) {
 
-			System.err.println("Error en la operación de la base de datos: " + e.getMessage());
+			System.err.println("Error en DBManager: " + e.getMessage());
+
+			Throwable causaOriginal = e.getCause();
+			if (causaOriginal != null) {
+				causaOriginal.getMessage();
+			}
 
 		} catch (Exception e) {
 
@@ -76,12 +81,12 @@ public class TestDBManager {
 
 			try {
 				dbManager.verificarYCrearTabla();
-				
+
 			} catch (Exception e) {
 				System.err.println("Error al verificar la Tabla: " + e.getMessage());
 				throw new DBManagerException("Error al verificar la Tabla: " + e.getMessage());
 			}
-			
+
 			try {
 
 				scanner.close();
@@ -96,10 +101,14 @@ public class TestDBManager {
 
 				dbManager.closeConnection();
 
-			} catch (Exception e) {
+			} catch (DBManagerException e) {
 
-				System.err.println("Error al cerrar la conexión: " + e.getMessage());
-				throw new DBManagerException("Error al cerrar la conexión: " + e.getMessage());
+				System.err.println("Error en DBManager: " + e.getMessage());
+
+				Throwable causaOriginal = e.getCause();
+				if (causaOriginal != null) {
+					causaOriginal.getMessage();
+				}
 			}
 		}
 
