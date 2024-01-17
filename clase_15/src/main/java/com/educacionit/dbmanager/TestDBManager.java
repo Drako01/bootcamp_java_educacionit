@@ -6,13 +6,12 @@ import com.educacionit.excepciones.DBManagerException;
 
 public class TestDBManager {
 
-	public static void main(String[] args) throws DBManagerException{
+	public static void main(String[] args) throws DBManagerException {
 		DBManager dbManager = new DBManager();
 		Scanner scanner = new Scanner(System.in);
 
 		try {
 			dbManager.conectar();
-			dbManager.verificarYCrearTabla();
 
 			System.out.println("Mostrando Alumnos:");
 			dbManager.mostrarAlumnos();
@@ -65,34 +64,42 @@ public class TestDBManager {
 			dbManager.mostrarAlumnos();
 
 		} catch (DBManagerException e) {
-			
+
 			System.err.println("Error en la operación de la base de datos: " + e.getMessage());
-			
+
 		} catch (Exception e) {
-			
+
 			System.err.println("Error general: " + e.getMessage());
-			throw new DBManagerException("Error general: " + e);
-			
+			throw new DBManagerException("Error general: " + e.getMessage());
+
 		} finally {
-			
+
 			try {
-				
-				scanner.close();
+				dbManager.verificarYCrearTabla();
 				
 			} catch (Exception e) {
-				
-				System.err.println("Error al cerrar el scanner: " + e.getMessage());
-				throw new DBManagerException("Error al cerrar el scanner: " + e);
+				System.err.println("Error al verificar la Tabla: " + e.getMessage());
+				throw new DBManagerException("Error al verificar la Tabla: " + e.getMessage());
 			}
 			
 			try {
-				
-				dbManager.closeConnection();
-				
+
+				scanner.close();
+
 			} catch (Exception e) {
-				
+
+				System.err.println("Error al cerrar el scanner: " + e.getMessage());
+				throw new DBManagerException("Error al cerrar el scanner: " + e.getMessage());
+			}
+
+			try {
+
+				dbManager.closeConnection();
+
+			} catch (Exception e) {
+
 				System.err.println("Error al cerrar la conexión: " + e.getMessage());
-				throw new DBManagerException("Error al cerrar la conexión: " + e);
+				throw new DBManagerException("Error al cerrar la conexión: " + e.getMessage());
 			}
 		}
 

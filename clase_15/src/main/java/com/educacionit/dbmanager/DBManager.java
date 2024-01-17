@@ -20,25 +20,43 @@ public class DBManager {
     public void conectar() throws DBManagerException{
         try {
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Conexión exitosa a la base de datos");
+            
         } catch (SQLException e) {
         	System.err.println("Error al conectar a la base de datos: " + e.getMessage());
+        	
         	throw new DBManagerException("Error al conectar a la base de datos" + e);
+        	
+        } finally {
+        	System.out.println("Conexión exitosa a la base de datos");
         }
     }
 
 
     public void verificarYCrearTabla() throws DBManagerException{
+    	
+    	String table = "alumnos";
+    	Statement statement = null;
+    	
         try {
-            Statement statement = conn.createStatement();
-            String query = "CREATE TABLE IF NOT EXISTS alumnos (" + "legajo INT PRIMARY KEY,"
+            statement = conn.createStatement();
+            String query = "CREATE TABLE IF NOT EXISTS " + table + " (" + "legajo INT PRIMARY KEY,"
                     + "nombre VARCHAR(255) NOT NULL," + "edad INT NOT NULL," + "especialidad VARCHAR(255) NOT NULL)";
             statement.executeUpdate(query);
-            System.out.println("Tabla 'Alumnos' verificada y creada si no existía");
-            statement.close();
+            
+            System.out.println("Tabla 'alumnos' verificada y creada si no existía");       
+                       
         } catch (SQLException e) {
             System.err.println("Error al verificar y crear la tabla: " + e.getMessage());
             throw new DBManagerException("Error al verificar y crear la tabla: " + e);
+            
+        } finally {
+        	try {
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar el statement: " + e.getMessage());
+            }
         }
     }
 
@@ -68,9 +86,7 @@ public class DBManager {
                     resultSet.close();
                 }
             } catch (SQLException e) {
-                System.err.println("Error al cerrar el resultSet: " + e.getMessage());
-                throw new DBManagerException("Error al cerrar el resultSet: " + e);
-                
+                System.err.println("Error al cerrar el resultSet: " + e.getMessage());                
             }
             try {
                 if (statement != null) {
@@ -78,7 +94,6 @@ public class DBManager {
                 }
             } catch (SQLException e) {
                 System.err.println("Error al cerrar el statement: " + e.getMessage());
-                throw new DBManagerException("Error al cerrar el statement: " + e);
             }
         }
     }
@@ -110,7 +125,6 @@ public class DBManager {
                 }
             } catch (SQLException e) {
                 System.err.println("Error al cerrar el statement: " + e.getMessage());
-                throw new DBManagerException("Error al cerrar el statement: " + e);
             }
         }
     }
@@ -142,7 +156,6 @@ public class DBManager {
                 }
             } catch (SQLException e) {
                 System.err.println("Error al cerrar el statement: " + e.getMessage());
-                throw new DBManagerException("Error al cerrar el statement: " + e);
             }
         }
     }
@@ -171,7 +184,6 @@ public class DBManager {
                 }
             } catch (SQLException e) {
                 System.err.println("Error al cerrar el statement: " + e.getMessage());
-                throw new DBManagerException("Error al cerrar el statement: " + e);
             }
         }
     }
