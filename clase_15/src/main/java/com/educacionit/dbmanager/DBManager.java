@@ -20,14 +20,14 @@ public class DBManager {
     public void conectar() throws DBManagerException{
         try {
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            
+            System.out.println("Conexión exitosa a la base de datos");
         } catch (SQLException e) {
         	System.err.println("Error al conectar a la base de datos: " + e.getMessage());
         	
         	throw new DBManagerException("Error al conectar a la base de datos" + e);
         	
         } finally {
-        	System.out.println("Conexión exitosa a la base de datos");
+        	System.out.println("Fin Bloque de Conexión a la base de datos");
         }
     }
 
