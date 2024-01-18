@@ -7,107 +7,76 @@ import db.excepciones.DBManagerException;
 
 public class TestDBManager {
 
-	public static void main(String[] args) throws DBManagerException {
-		DBManager dbManager = new DBManager();
-		Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+    	DBManager dbManager = new DBManager();
+        try ( Scanner scanner = new Scanner(System.in)) {
 
-		try {
-			dbManager.conectar();
-			try {
-				dbManager.verificarYCrearTabla();
+            dbManager.conectar();
+            try {
+                dbManager.verificarYCrearTabla();
+            } catch (DBManagerException e) {
+                throw new DBManagerException(DBConexionException.ERROR_3,
+                        "Error al verificar y crear la tabla " + e.getMessage(), e);
+            }
 
-			} catch (DBManagerException e) {
-				throw new DBManagerException(DBConexionException.ERROR_3,
-						"Error al verificar y crear la tabla " + e.getMessage(), e);
-			}
-			System.out.println("Mostrando Alumnos:");
-			dbManager.mostrarAlumnos();
+            System.out.println("Mostrando Alumnos:");
+            dbManager.mostrarAlumnos();
 
-			System.out.println("Ingrese los datos del nuevo alumno:");
-			System.out.print("Legajo: ");
-			int legajo = scanner.nextInt();
-			scanner.nextLine();
+            System.out.println("Ingrese los datos del nuevo alumno:");
+            System.out.print("Legajo: ");
+            int legajo = scanner.nextInt();
+            scanner.nextLine();
 
-			System.out.print("Nombre: ");
-			String nombre = scanner.nextLine();
+            System.out.print("Nombre: ");
+            String nombre = scanner.nextLine();
 
-			System.out.print("Edad: ");
-			int edad = scanner.nextInt();
-			scanner.nextLine();
+            System.out.print("Edad: ");
+            int edad = scanner.nextInt();
+            scanner.nextLine();
 
-			System.out.print("Especialidad: ");
-			String especialidad = scanner.nextLine();
+            System.out.print("Especialidad: ");
+            String especialidad = scanner.nextLine();
 
-			Alumno nuevoAlumno = new Alumno(legajo, nombre, edad, especialidad);
-			dbManager.insertarAlumno(nuevoAlumno);
+            Alumno nuevoAlumno = new Alumno(legajo, nombre, edad, especialidad);
+            dbManager.insertarAlumno(nuevoAlumno);
 
-			System.out.println("Mostrando Alumnos después de la inserción:");
-			dbManager.mostrarAlumnos();
+            System.out.println("Mostrando Alumnos después de la inserción:");
+            dbManager.mostrarAlumnos();
 
-			System.out.println("Modificando el alumno con legajo " + legajo + ":");
-			System.out.print("Nuevo nombre: ");
-			String nuevoNombre = scanner.nextLine();
+            System.out.println("Modificando el alumno con legajo " + legajo + ":");
+            System.out.print("Nuevo nombre: ");
+            String nuevoNombre = scanner.nextLine();
 
-			System.out.print("Nueva edad: ");
-			int nuevaEdad = scanner.nextInt();
-			scanner.nextLine();
+            System.out.print("Nueva edad: ");
+            int nuevaEdad = scanner.nextInt();
+            scanner.nextLine();
 
-			System.out.print("Nueva especialidad: ");
-			String nuevaEspecialidad = scanner.nextLine();
+            System.out.print("Nueva especialidad: ");
+            String nuevaEspecialidad = scanner.nextLine();
 
-			nuevoAlumno.setNombre(nuevoNombre);
-			nuevoAlumno.setEdad(nuevaEdad);
-			nuevoAlumno.setEspecialidad(nuevaEspecialidad);
-			dbManager.modificarAlumno(nuevoAlumno);
+            nuevoAlumno.setNombre(nuevoNombre);
+            nuevoAlumno.setEdad(nuevaEdad);
+            nuevoAlumno.setEspecialidad(nuevaEspecialidad);
+            dbManager.modificarAlumno(nuevoAlumno);
 
-			System.out.println("Mostrando Alumnos después de la modificación:");
-			dbManager.mostrarAlumnos();
+            System.out.println("Mostrando Alumnos después de la modificación:");
+            dbManager.mostrarAlumnos();
 
-			System.out.print("Ingrese el legajo del alumno a eliminar: ");
-			int legajoEliminar = scanner.nextInt();
-			dbManager.eliminarAlumno(legajoEliminar);
+            System.out.print("Ingrese el legajo del alumno a eliminar: ");
+            int legajoEliminar = scanner.nextInt();
+            dbManager.eliminarAlumno(legajoEliminar);
 
-			System.out.println("Mostrando Alumnos después de la eliminación:");
-			dbManager.mostrarAlumnos();
+            System.out.println("Mostrando Alumnos después de la eliminación:");
+            dbManager.mostrarAlumnos();
 
-		} catch (DBManagerException e) {
-
-			System.err.println("Error en DBManager: " + e.getMessage());
-
-			Throwable causaOriginal = e.getCause();
-			if (causaOriginal != null) {
-				causaOriginal.getMessage();
-			}
-
-		} catch (Exception e) {
-
-			System.err.println("Error general: " + e.getMessage());
-
-		} finally {
-			
-			try {
-
-				scanner.close();
-
-			} catch (Exception e) {
-
-				System.err.println("Error al cerrar el scanner: " + e.getMessage());
-			}
-
-			try {
-
-				dbManager.closeConnection();
-
-			} catch (DBManagerException e) {
-
-				System.err.println("Error en DBManager: " + e.getMessage());
-
-				Throwable causaOriginal = e.getCause();
-				if (causaOriginal != null) {
-					causaOriginal.getMessage();
-				}
-			}
-		}
-
-	}
+        } catch (DBManagerException e) {
+            System.err.println("Error en DBManager: " + e.getMessage());
+            Throwable causaOriginal = e.getCause();
+            if (causaOriginal != null) {
+                causaOriginal.getMessage();
+            }
+        } catch (Exception e) {
+            System.err.println("Error general: " + e.getMessage());
+        }
+    }
 }
