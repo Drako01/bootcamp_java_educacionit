@@ -83,12 +83,11 @@ public class DBManager {
 		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
 
 		String query = "SELECT legajo, nombre, edad, especialidad FROM alumnos";
-		Statement statement = null;
-		ResultSet resultSet = null;
-
-		try {
-			statement = conn.createStatement();
-			resultSet = statement.executeQuery(query);
+		
+		try (
+				Statement statement = conn.createStatement(); 
+				ResultSet resultSet = statement.executeQuery(query);
+			) {
 
 			while (resultSet.next()) {
 				int legajo = resultSet.getInt(1);
@@ -108,26 +107,7 @@ public class DBManager {
 
 			throw new DBManagerException(DBManagerException.ERROR_3, "Error al mostrar alumnos: " + e.getMessage(), e);
 
-		} finally {
-			try {
-				if (resultSet != null) {
-					resultSet.close();
-				}
-
-			} catch (SQLException e) {
-
-				System.err.println("Error al cerrar el resultSet" + e.getMessage());
-			}
-			try {
-				if (statement != null) {
-					statement.close();
-				}
-
-			} catch (SQLException e) {
-
-				System.err.println("Error al cerrar el statement" + e.getMessage());
-			}
-		}
+		} 
 
 		return listaAlumnos;
 
