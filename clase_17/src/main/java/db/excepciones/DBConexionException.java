@@ -1,4 +1,4 @@
-package manejo.de.excepciones;
+package db.excepciones;
 
 public class DBConexionException extends Exception {
 	

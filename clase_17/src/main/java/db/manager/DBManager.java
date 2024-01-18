@@ -7,8 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import manejo.de.excepciones.DBConexionException;
-import manejo.de.excepciones.DBManagerException;
+import db.excepciones.DBConexionException;
+import db.excepciones.DBManagerException;
 
 public class DBManager {
 

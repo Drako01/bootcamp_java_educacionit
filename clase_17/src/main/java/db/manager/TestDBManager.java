@@ -2,8 +2,8 @@ package db.manager;
 
 import java.util.Scanner;
 
-import manejo.de.excepciones.DBConexionException;
-import manejo.de.excepciones.DBManagerException;
+import db.excepciones.DBConexionException;
+import db.excepciones.DBManagerException;
 
 public class TestDBManager {
 
