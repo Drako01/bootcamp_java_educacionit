@@ -15,7 +15,7 @@ public class TestDBManagerNew {
 
 			dbManager.mostrarAlumnos();
 
-			dbManager.obtenerUnAlumno(null);
+			dbManager.obtenerUnAlumno(2);
 
 			ArrayList<Alumno> alumnos = dbManager.mostrarLosAlumnos();
 
