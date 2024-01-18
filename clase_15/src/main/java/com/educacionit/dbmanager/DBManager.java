@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.educacionit.excepciones.DBConexionException;
 import com.educacionit.excepciones.DBManagerException;
 
 public class DBManager {
@@ -24,7 +25,7 @@ public class DBManager {
 			System.out.println("Conexión exitosa a la base de datos");
 		} catch (SQLException e) {
 
-			throw new DBManagerException(DBManagerException.ERROR_1,
+			throw new DBManagerException(DBConexionException.ERROR_1,
 					"Error al conectar a la base de datos" + e.getMessage(), e);
 
 		} finally {
@@ -46,7 +47,7 @@ public class DBManager {
 
 		} catch (SQLException e) {
 
-			throw new DBManagerException(DBManagerException.ERROR_2,
+			throw new DBManagerException(DBConexionException.ERROR_3,
 					"Error al verificar y crear la tabla " + e.getMessage(), e);
 
 		} 
@@ -127,8 +128,8 @@ public class DBManager {
 			Boolean hayRegistros = resultSet.next();
 
 			if (hayRegistros == false) {
-				throw new DBManagerException(DBManagerException.ERROR_4,
-						"Error al mostrar el alumno de legajo: " + legajo);
+				throw new DBManagerException(DBManagerException.ERROR_5,
+						"No Existe ese Nro de legajo: " + legajo);
 			}
 
 			String nombre = resultSet.getString("nombre");
@@ -184,13 +185,13 @@ public class DBManager {
 			int rowsAffected = statement.executeUpdate();
 
 			if (rowsAffected == 0) {
-				throw new DBManagerException(DBManagerException.ERROR_5, "No se pudo insertar el alumno: " + alumno);
+				throw new DBManagerException(DBManagerException.ERROR_6, "No se pudo insertar el alumno: " + alumno);
 			}
 			System.out.println("El Alumno " + alumno + " modificado correctamente");
 
 		} catch (SQLException e) {
 
-			throw new DBManagerException(DBManagerException.ERROR_5, "Error al insertar alumno: " + e.getMessage(), e);
+			throw new DBManagerException(DBManagerException.ERROR_6, "Error al insertar alumno: " + e.getMessage(), e);
 
 		} finally {
 
@@ -220,12 +221,12 @@ public class DBManager {
 
 			int rowsAffected = statement.executeUpdate();
 			if (rowsAffected == 0) {
-				throw new DBManagerException(DBManagerException.ERROR_6, "No se pudo insertar el alumno: " + alumno);
+				throw new DBManagerException(DBManagerException.ERROR_7, "No se pudo insertar el alumno: " + alumno);
 			}
 			System.out.println("El Alumno " + alumno + " modificado correctamente");
 		} catch (SQLException e) {
 
-			throw new DBManagerException(DBManagerException.ERROR_6, "Error al modificar alumno" + e.getMessage(), e);
+			throw new DBManagerException(DBManagerException.ERROR_7, "Error al modificar alumno" + e.getMessage(), e);
 
 		} finally {
 
@@ -258,7 +259,7 @@ public class DBManager {
 
 		} catch (SQLException e) {
 
-			throw new DBManagerException(DBManagerException.ERROR_7, "Error al eliminar alumno" + e.getMessage(), e);
+			throw new DBManagerException(DBManagerException.ERROR_8, "Error al eliminar alumno" + e.getMessage(), e);
 
 		} finally {
 
@@ -282,8 +283,8 @@ public class DBManager {
 			}
 		} catch (SQLException e) {
 
-			throw new DBManagerException(DBManagerException.ERROR_8, "Error al cerrar la conexión: " + e.getMessage(),
-					e);
+			throw new DBManagerException(DBConexionException.ERROR_4, 
+					"Error al cerrar la conexión: " + e.getMessage(), e);
 
 		} finally {
 

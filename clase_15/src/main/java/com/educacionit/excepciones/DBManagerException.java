@@ -57,17 +57,17 @@ public class DBManagerException extends Exception {
 		case ERROR_2:
 			return "La conexión a la Base de datos Falló" + super.getMessage();
 		case ERROR_3:
-			return "La conexión a la Base de datos Falló" + super.getMessage();
+			return "Error al mostrar alumnos. Error: " + super.getMessage();
 		case ERROR_4:
-			return "La conexión a la Base de datos Falló" + super.getMessage();
+			return "Error al mostrar el alumno. Error: " + super.getMessage();
 		case ERROR_5:
-			return "La conexión a la Base de datos Falló" + super.getMessage();
+			return "No Existe ese Nro de legajo. Error: " + super.getMessage();
 		case ERROR_6:
-			return "La conexión a la Base de datos Falló" + super.getMessage();
+			return "No se pudo insertar el alumno. Error: " + super.getMessage();
 		case ERROR_7:
-			return "La conexión a la Base de datos Falló" + super.getMessage();
+			return "Error al modificar alumno. Error: " + super.getMessage();
 		case ERROR_8:
-			return "La conexión a la Base de datos Falló" + super.getMessage();
+			return "Error al eliminar alumno. Error: " + super.getMessage();
 		default:
 			return super.getMessage();
 		}
