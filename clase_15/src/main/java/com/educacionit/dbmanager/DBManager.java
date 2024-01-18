@@ -70,7 +70,7 @@ public class DBManager {
 		try (
 				Statement statement = conn.createStatement(); 
 				ResultSet resultSet = statement.executeQuery(query);
-				) {
+			) {
 
 			while (resultSet.next()) {
 				int legajo = resultSet.getInt("legajo");
