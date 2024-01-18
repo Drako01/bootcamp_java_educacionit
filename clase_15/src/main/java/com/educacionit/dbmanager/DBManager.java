@@ -296,7 +296,7 @@ public class DBManager {
 		}
 	}
 
-	/*public void closeConnection() throws DBManagerException {
+	public void closeConnection() throws DBManagerException {
 		try {
 			if (conn != null) {
 				conn.close();
@@ -311,6 +311,6 @@ public class DBManager {
 
 			System.out.println("Bloque de Cerrar conexión Finalizado");
 		}
-	}*/
+	}
 
 }
