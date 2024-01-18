@@ -19,8 +19,10 @@ public class DBManager {
 	private Connection conn;
 
 	public void conectar() throws DBManagerException {
-		try {
-			conn = DriverManager.getConnection(URL, USER, PASSWORD);
+		try (
+				Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+			){
+			
 			System.out.println("Conexión exitosa a la base de datos");
 		} catch (SQLException e) {
 
@@ -34,11 +36,10 @@ public class DBManager {
 
 	public void verificarYCrearTabla() throws DBManagerException {
 
-		String table = "alumnos";
-		Statement statement = null;
+		String table = "alumnos";		
 
-		try {
-			statement = conn.createStatement();
+		try (Statement statement = conn.createStatement(); ){
+			
 			String query = "CREATE TABLE IF NOT EXISTS " + table + " (" + "legajo INT PRIMARY KEY,"
 					+ "nombre VARCHAR(255) NOT NULL," + "edad INT NOT NULL," + "especialidad VARCHAR(255) NOT NULL)";
 			statement.executeUpdate(query);
@@ -50,17 +51,7 @@ public class DBManager {
 			throw new DBManagerException(DBManagerException.ERROR_2,
 					"Error al verificar y crear la tabla " + e.getMessage(), e);
 
-		} finally {
-			try {
-				if (statement != null) {
-					statement.close();
-				}
-			} catch (SQLException e) {
-
-				throw new DBManagerException(DBManagerException.ERROR_2,
-						"Error al cerrar el statement: " + e.getMessage(), e);
-			}
-		}
+		} 
 	}
 
 	public void mostrarAlumnos() throws DBManagerException {
@@ -305,7 +296,7 @@ public class DBManager {
 		}
 	}
 
-	public void closeConnection() throws DBManagerException {
+	/*public void closeConnection() throws DBManagerException {
 		try {
 			if (conn != null) {
 				conn.close();
@@ -320,6 +311,6 @@ public class DBManager {
 
 			System.out.println("Bloque de Cerrar conexión Finalizado");
 		}
-	}
+	}*/
 
 }
