@@ -40,21 +40,21 @@ public class DBManagerException extends Exception {
 	public String getMessage() {
 		switch (error) {
 		case ERROR_1:
-			return "Error al mostrar a los alumnos. Error: " + super.getMessage();
+			return "Error al mostrar a los alumnos. \nError: " + super.getMessage();
 		case ERROR_2:
-			return "Error al obtener los alumnos. Error: " + super.getMessage();
+			return "Error al obtener los alumnos. \nError: " + super.getMessage();
 		case ERROR_3:
-			return "Error al mostrar el alumno. Error: " + super.getMessage();
+			return "Error al mostrar el alumno. \nError: " + super.getMessage();
 		case ERROR_4:
-			return "Error al mostrar el alumno. Error: " + super.getMessage();
+			return "Error al mostrar el alumno. \nError: " + super.getMessage();
 		case ERROR_5:
-			return "No Existe ese Nro de legajo. Error: " + super.getMessage();
+			return "No Existe ese Nro de legajo. \nError: " + super.getMessage();
 		case ERROR_6:
-			return "No se pudo insertar el alumno. Error: " + super.getMessage();
+			return "No se pudo insertar el alumno. \nError: " + super.getMessage();
 		case ERROR_7:
-			return "Error al modificar alumno. Error: " + super.getMessage();
+			return "Error al modificar alumno. \nError: " + super.getMessage();
 		case ERROR_8:
-			return "Error al eliminar alumno. Error: " + super.getMessage();
+			return "Error al eliminar alumno. \nError: " + super.getMessage();
 		default:
 			return super.getMessage();
 		}

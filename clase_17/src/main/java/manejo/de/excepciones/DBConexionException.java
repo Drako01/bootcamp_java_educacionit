@@ -34,13 +34,13 @@ public class DBConexionException extends Exception {
 	public String getMessage() {
 		switch (error) {
 		case ERROR_1:
-			return "La conexión a la Base de datos Falló. Error: " + super.getMessage();
+			return "La conexión a la Base de datos Falló. \nError: " + super.getMessage();
 		case ERROR_2:
-			return "La Base de Datos No Existe. Error: " + super.getMessage();
+			return "La Base de Datos No Existe. \nError: " + super.getMessage();
 		case ERROR_3:
-			return "La Tabla solicitada No Existe. Error: " + super.getMessage();
+			return "La Tabla solicitada No Existe. \nError: " + super.getMessage();
 		case ERROR_4:
-			return "No se pudo Desconectar de la Base de datos. Error: " + super.getMessage();		
+			return "No se pudo Desconectar de la Base de datos. \nError: " + super.getMessage();		
 		default:
 			return super.getMessage();
 		}
