@@ -74,8 +74,7 @@ public class TestDBManager {
 
 		} catch (Exception e) {
 
-			System.err.println("Error general: " + e.getMessage());
-			throw new DBManagerException("Error general: " + e.getMessage());
+			System.err.println("Error general: " + e.getMessage());			
 
 		} finally {
 
@@ -83,8 +82,7 @@ public class TestDBManager {
 				dbManager.verificarYCrearTabla();
 
 			} catch (Exception e) {
-				System.err.println("Error al verificar la Tabla: " + e.getMessage());
-				throw new DBManagerException("Error al verificar la Tabla: " + e.getMessage());
+				System.err.println("Error al verificar la Tabla: " + e.getMessage());				
 			}
 
 			try {
@@ -93,8 +91,7 @@ public class TestDBManager {
 
 			} catch (Exception e) {
 
-				System.err.println("Error al cerrar el scanner: " + e.getMessage());
-				throw new DBManagerException("Error al cerrar el scanner: " + e.getMessage());
+				System.err.println("Error al cerrar el scanner: " + e.getMessage());				
 			}
 
 			try {
