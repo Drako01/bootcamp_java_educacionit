@@ -36,6 +36,10 @@ public class DBManagerException extends Exception {
 		
 	}	
 
+	public Integer getErrorCode() {
+		return error;
+	}
+	
 	@Override
 	public String getMessage() {
 		switch (error) {

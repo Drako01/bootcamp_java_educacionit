@@ -8,8 +8,10 @@ import db.excepciones.DBManagerException;
 public class TestDBManager {
 
     public static void main(String[] args) {
-    	DBManager dbManager = new DBManager();
-        try ( Scanner scanner = new Scanner(System.in)) {
+        try ( 
+        		DBManager dbManager = new DBManager();
+        		Scanner scanner = new Scanner(System.in)
+        	) {
 
             dbManager.conectar();
             try {
@@ -72,11 +74,12 @@ public class TestDBManager {
         } catch (DBManagerException e) {
             System.err.println("Error en DBManager: " + e.getMessage());
             Throwable causaOriginal = e.getCause();
-            if (causaOriginal != null) {
-                causaOriginal.getMessage();
-            }
+            if (causaOriginal != null) causaOriginal.getMessage();            
+            
         } catch (Exception e) {
             System.err.println("Error general: " + e.getMessage());
+        } finally {
+        	System.out.println("Gracias por usar nuestro Servicio.!");
         }
     }
 }

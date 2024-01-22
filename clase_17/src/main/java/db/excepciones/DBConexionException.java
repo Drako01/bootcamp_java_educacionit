@@ -30,6 +30,10 @@ public class DBConexionException extends Exception {
 		this.error = error;
 	}
 
+	public Integer getErrorCode() {
+		return error;
+	}
+	
 	@Override
 	public String getMessage() {
 		switch (error) {
