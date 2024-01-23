@@ -18,7 +18,7 @@ public class TestDBManager {
                 dbManager.verificarYCrearTabla();
             } catch (DBManagerException e) {
                 throw new DBManagerException(DBConexionException.ERROR_3,
-                        "Error al verificar y crear la tabla " + e.getMessage(), e);
+                    "Error al verificar y crear la tabla " + e.getMessage(), e);
             }
 
             System.out.println("Mostrando Alumnos:");
