@@ -74,3 +74,87 @@ SELECT telefono, saldo FROM usuarios WHERE saldo <= 300 ORDER BY 2;
  
 SELECT SUM(saldo) AS suma_saldos FROM usuarios  WHERE compania = 'NEXTEL';
 
+SELECT COUNT(*) AS usuarios_x_compania, compania FROM usuarios GROUP By compania ORDER By compania;
+
+SELECT COUNT(*) AS usuarios_x_nivel, nivel FROM usuarios GROUP By nivel ORDER By nivel;
+
+SELECT usuario, nivel FROM usuarios WHERE nivel = 2;
+
+SELECT email FROM usuarios WHERE LOWER(email) LIKE '%@gmail.com';
+
+SELECT nombre, telefono, marca FROM usuarios WHERE marca IN('LG', 'SAMSUNG', 'MOTOROLA') ORDER By marca;
+
+CREATE TABLE marcas (id integer auto_increment not null primary key) SELECT marca FROM usuarios GROUP BY marca ORDER BY 1;
+SELECT * FROM marcas;
+ALTER TABLE usuarios ADD COLUMN id_marca INTEGER NOT NULL;
+SET SQL_SAFE_UPDATES = 0;
+UPDATE usuarios SET id_marca = 1 WHERE marca = 'BLACKBERRY';
+UPDATE usuarios SET id_marca = 2 WHERE marca = 'LG';
+UPDATE usuarios SET id_marca = 3 WHERE marca = 'MOTOROLA';
+UPDATE usuarios SET id_marca = 4 WHERE marca = 'NOKIA';
+UPDATE usuarios SET id_marca = 5 WHERE marca = 'SAMSUNG';
+UPDATE usuarios SET id_marca = 6 WHERE marca = 'SONY';
+
+SELECT * FROM usuarios;
+ALTER TABLE usuarios DROP COLUMN marca;
+
+SELECT 
+	a.nombre, a.telefono, b.marca 
+FROM 
+	usuarios a , marcas b
+WHERE 
+	a.id_marca IN(4, 1)
+AND 
+	a.id_marca = b.id;
+
+/*Integridad referencial*/
+ALTER TABLE usuarios ADD foreign key (id_marca) REFERENCES maras(id); /*Alta de Clave Foranea*/
+
+
+CREATE TABLE companias (id integer auto_increment not null primary key) SELECT compania FROM usuarios GROUP BY compania ORDER BY 1;
+ALTER TABLE usuarios ADD COLUMN id_compania INTEGER NOT NULL;
+SELECT compania FROM usuarios group by compania order by compania;
+UPDATE usuarios SET id_compania = 1 WHERE compania = 'AT&T';
+UPDATE usuarios SET id_compania = 2 WHERE compania = 'AXEL';
+UPDATE usuarios SET id_compania = 3 WHERE compania = 'IUSACELL';
+UPDATE usuarios SET id_compania = 4 WHERE compania = 'MOVISTAR';
+UPDATE usuarios SET id_compania = 5 WHERE compania = 'NEXTEL';
+UPDATE usuarios SET id_compania = 6 WHERE compania = 'TELCEL';
+UPDATE usuarios SET id_compania = 7 WHERE compania = 'UNEFON';
+
+ALTER TABLE usuarios ADD foreign key (id_compania) REFERENCES companias(id);
+ALTER TABLE usuarios DROP COLUMN compania;
+SELECT * FROM companias;
+SELECT * FROM usuarios;
+
+SELECT 
+	a.nombre, a.telefono, b.compania 
+FROM 
+	usuarios a , companias b
+WHERE 
+	a.id_compania IN(4, 1, 2)
+AND 
+	a.id_compania = b.id;
+
+/*
+Consultas Bloque 2
+
+1.	Listar nombre y teléfono de los usuarios con teléfono que no sea de la marca LG o SAMSUNG
+2.	Listar el login y teléfono de los usuarios con compañia telefónica IUSACELL
+3.	Listar el login y teléfono de los usuarios con compañia telefónica que no sea TELCEL
+4.	Calcular el saldo promedio de los usuarios que tienen teléfono marca NOKIA
+5.	Listar el login y teléfono de los usuarios con compañia telefónica IUSACELL o AXEL
+6.	Mostrar el email de los usuarios que no usan yahoo
+7.	Listar el login y teléfono de los usuarios con compañia telefónica que no sea TELCEL o IUSACELL
+8.	Listar el login y teléfono de los usuarios con compañia telefónica UNEFON
+9.	Listar las diferentes marcas de celular en orden alfabético descendentemente
+10.	Listar las diferentes compañias en orden alfabético aleatorio
+11.	Listar el login de los usuarios con nivel 0 o 2
+12.	Calcular el saldo promedio de los usuarios que tienen teléfono marca LG
+
+*/
+
+SELECT nombre, telefono, marca FROM usuarios WHERE marca NOT IN('LG', 'SAMSUNG') ORDER By marca;
+
+SELECT usuario, telefono, compania FROM usuarios WHERE compania = 'IUSACELL' ORDER By usuario;
+
