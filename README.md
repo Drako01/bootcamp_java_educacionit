@@ -39,10 +39,14 @@ Agradezco a la comunidad de programadores y a los instructores del Bootcamp en E
 <p align="center"> 
  <a href="https://www.w3.org/html/" target="_blank"> 
      <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/mysql_official_logo_icon_169938.png" alt="sql" height="100"/></a> 
-    &nbsp &nbsp
+    &nbsp &nbsp &nbsp
  <a href="https://www.w3schools.com/css/" target="_blank"> 
  <img src="https://miro.medium.com/v2/resize:fit:1100/0*5FEJ7emIEAxZRCQF" alt="spring-boot"  height="100"/></a> 
-</p>
+ </p>&nbsp
+ <p align="center"> 
+ <a href="https://www.w3.org/html/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="140" /></a> <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="140" /></a> <a href="https://www.w3.org/sass/" target="_blank">
+  <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="140" /> </a> 
+</p>&nbsp
 
 
 ---
