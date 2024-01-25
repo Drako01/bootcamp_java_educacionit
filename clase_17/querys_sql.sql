@@ -83,7 +83,7 @@ SELECT usuario, nivel FROM usuarios WHERE nivel = 2;
 SELECT email FROM usuarios WHERE LOWER(email) LIKE '%@gmail.com';
 
 SELECT nombre, telefono, marca FROM usuarios WHERE marca IN('LG', 'SAMSUNG', 'MOTOROLA') ORDER By marca;
-
+DROP table marcas;
 CREATE TABLE marcas (id integer auto_increment not null primary key) SELECT marca FROM usuarios GROUP BY marca ORDER BY 1;
 SELECT * FROM marcas;
 ALTER TABLE usuarios ADD COLUMN id_marca INTEGER NOT NULL;
@@ -94,7 +94,8 @@ UPDATE usuarios SET id_marca = 3 WHERE marca = 'MOTOROLA';
 UPDATE usuarios SET id_marca = 4 WHERE marca = 'NOKIA';
 UPDATE usuarios SET id_marca = 5 WHERE marca = 'SAMSUNG';
 UPDATE usuarios SET id_marca = 6 WHERE marca = 'SONY';
-
+CREATE TABLE marcas (id integer auto_increment not null primary key, marca VARCHAR(20) NULL) ;
+/*INSERT INTO marcas VALUES (1, 'BLACKBERRY'),(2, 'LG'),(3, 'MOTOROLA'),(4, 'NOKIA'),(5, 'SAMSUNG'),(6, 'SONY');*/
 SELECT * FROM usuarios;
 ALTER TABLE usuarios DROP COLUMN marca;
 
@@ -108,8 +109,9 @@ AND
 	a.id_marca = b.id;
 
 /*Integridad referencial*/
-ALTER TABLE usuarios ADD foreign key (id_marca) REFERENCES maras(id); /*Alta de Clave Foranea*/
-
+USE pruebas;
+ALTER TABLE usuarios ADD foreign key (id_marca) REFERENCES marcas(id); /*Alta de Clave Foranea*/
+/*foreign key*/
 
 CREATE TABLE companias (id integer auto_increment not null primary key) SELECT compania FROM usuarios GROUP BY compania ORDER BY 1;
 ALTER TABLE usuarios ADD COLUMN id_compania INTEGER NOT NULL;
@@ -125,6 +127,7 @@ UPDATE usuarios SET id_compania = 7 WHERE compania = 'UNEFON';
 ALTER TABLE usuarios ADD foreign key (id_compania) REFERENCES companias(id);
 ALTER TABLE usuarios DROP COLUMN compania;
 SELECT * FROM companias;
+SELECT * FROM marcas;
 SELECT * FROM usuarios;
 
 SELECT 
@@ -154,7 +157,283 @@ Consultas Bloque 2
 
 */
 
-SELECT nombre, telefono, marca FROM usuarios WHERE marca NOT IN('LG', 'SAMSUNG') ORDER By marca;
+SELECT 
+	U.nombre AS Nombre, U.telefono AS Teléfono, M.marca
+FROM 
+	usuarios U, marcas M
+WHERE 
+	U.id_marca = M.id 
+AND
+	M.marca 
+NOT IN ('LG','SAMSUNG');
 
-SELECT usuario, telefono, compania FROM usuarios WHERE compania = 'IUSACELL' ORDER By usuario;
+SELECT 
+	U.usuario AS Login, U.telefono AS Teléfono, C.compania
+FROM 
+	usuarios U, companias C
+WHERE 
+	U.id_compania = C.id 
+AND
+	compania = 'IUSACELL';
+    
+SELECT 
+	U.usuario AS Login, U.telefono AS Teléfono, C.compania
+FROM 
+	usuarios U, companias C
+WHERE 
+	U.id_compania = C.id 
+AND
+	compania <> 'TELCEL';
+    
+SELECT AVG(saldo) AS Promedio
+FROM usuarios U, marcas M
+WHERE 
+	U.id_marca = M.id
+AND
+	M.marca = 'NOKIA';
+    
+SELECT 
+	U.usuario AS Login, U.telefono AS Teléfono, C.compania
+FROM 
+	usuarios U, companias C
+WHERE 
+	U.id_compania = C.id 
+AND
+	compania IN ('IUSACELL', 'AXEL');
+    
+SELECT email AS EMail FROM usuarios WHERE email NOT LIKE '%@yahoo.com';
 
+SELECT 
+	U.usuario AS Login, U.telefono AS Teléfono, C.compania AS Compañía
+FROM 
+	usuarios U, companias C
+WHERE 
+	U.id_compania = C.id 
+AND
+	C.compania NOT IN ('IUSACELL', 'TELCEL');
+    
+SELECT 
+	U.usuario AS Login, U.telefono AS Teléfono, C.compania AS Compañía
+FROM 
+	usuarios U, companias C
+WHERE 
+	U.id_compania = C.id 
+AND
+	C.compania = 'UNEFON';
+    
+SELECT marca FROM marcas ORDER By marca DESC;
+
+SELECT compania FROM companias ORDER By RAND();
+
+SELECT usuario, nivel FROM usuarios WHERE nivel IN(0,2) ORDER By nivel;
+
+SELECT AVG(saldo) AS Promedio
+FROM usuarios U, marcas M
+WHERE 
+	U.id_marca = M.id
+AND
+	M.marca = 'LG';
+    
+/*
+Consultas Bloque 3
+
+1.	Listar el login de los usuarios con nivel 1 o 3
+2.	Listar nombre y teléfono de los usuarios con teléfono que no sea de la marca BLACKBERRY
+3.	Listar el login de los usuarios con nivel 3
+4.	Listar el login de los usuarios con nivel 0
+5.	Listar el login de los usuarios con nivel 1
+6.	Contar el número de usuarios por sexo
+7.	Listar el login y teléfono de los usuarios con compañia telefónica AT&T
+8.	Listar las diferentes compañias en orden alfabético descendentemente
+9.	Listar el logn de los usuarios inactivos
+10.	Listar los números de teléfono sin saldo
+11.	Calcular el saldo mínimo de los usuarios de sexo “Hombre”
+12.	Listar los números de teléfono con saldo mayor a 300
+
+*/
+
+SELECT 
+	usuario, nivel 
+FROM 
+	usuarios 
+WHERE 
+	nivel IN(1,3) 
+ORDER By nivel;
+
+SELECT 
+	U.nombre AS Nombre, U.telefono AS Teléfono, C.compania
+FROM 
+	usuarios U, companias C
+WHERE 
+	U.id_compania = C.id 
+AND
+	compania <> 'BLACKBERRY';
+    
+SELECT 
+	usuario, nivel 
+FROM 
+	usuarios 
+WHERE 
+	nivel = 3;
+
+SELECT 
+	usuario, nivel 
+FROM 
+	usuarios 
+WHERE 
+	nivel = 0;
+
+SELECT 
+	usuario, nivel 
+FROM 
+	usuarios 
+WHERE 
+	nivel = 1;
+    
+SELECT 
+	sexo, COUNT(*) AS Cantidad_Usuarios
+FROM 
+	usuarios 
+GROUP BY 
+	sexo;
+
+SELECT 
+	U.usuario AS Login, U.telefono AS Teléfono, C.compania
+FROM 
+	usuarios U, companias C
+WHERE 
+	U.id_compania = C.id 
+AND
+	compania = 'AT&T';
+    
+SELECT compania 
+FROM companias 
+ORDER By compania DESC;
+
+SELECT 
+	usuario AS Login, activo AS Estado
+FROM 
+	usuarios 
+WHERE 
+	activo = 0;
+
+/*
+Version PRO
+SELECT 
+	usuario AS Login, 
+	CASE 
+		WHEN activo = 0 THEN 'Inactivo'
+		ELSE 'Activo'
+	END AS Estado
+FROM 
+	usuarios
+WHERE activo = 0;*/
+
+SELECT telefono, saldo 
+FROM usuarios
+WHERE saldo =0;
+
+SELECT 
+	sexo AS Sexo,
+	MIN(saldo) AS SaldoMinimo
+FROM 
+	usuarios 
+WHERE 
+	sexo = 'H';
+
+SELECT 
+	telefono AS Teléfono,
+	saldo AS Saldo
+FROM 
+	usuarios 
+WHERE 
+	saldo > 300;
+
+
+/*
+Consultas Bloque 4
+
+1.	Contar el número de usuarios por marca de teléfono
+2.	Listar nombre y teléfono de los usuarios con teléfono que no sea de la marca LG
+3.	Listar las diferentes compañias en orden alfabético ascendentemente
+4.	Calcular la suma de los saldos de los usuarios de la compañia telefónica UNEFON
+5.	Mostrar el email de los usuarios que usan hotmail
+6.	Listar los nombres de los usuarios sin saldo o inactivos
+7.	Listar el login y teléfono de los usuarios con compañia telefónicaIUSACELL o TELCEL
+8.	Listar las diferentes marcas de celular en orden alfabético ascendentemente
+9.	Listar las diferentes marcas de celular en orden alfabético aleatorio
+10.	Listar el login y teléfono de los usuarios con compañia telefónica IUSACELL o UNEFON
+11.	Listar nombre y teléfono de los usuarios con teléfono que no sea de la marca MOTOROLA o NOKIA
+12.	Calcular la suma de los saldos de los usuarios de la compañia telefónica TELCEL
+
+*/
+
+/*SELECT 
+	marca AS MarcaTelefono,
+	COUNT(*) AS CantidadUsuarios
+FROM 
+	usuarios U, marcas M 
+WHERE 
+	U.id_marca = M.id
+GROUP BY 
+	M.marca;*/
+
+/*Otra forma usando JOIN*/
+SELECT 
+	marca AS MarcaTelefono,
+	COUNT(*) AS CantidadUsuarios
+FROM 
+	usuarios
+JOIN marcas ON usuarios.id_marca = marcas.id
+GROUP BY 
+	marcas.marca;
+
+SELECT 
+	nombre AS Nombre, telefono AS Teléfono
+FROM 
+	usuarios 
+JOIN marcas ON usuarios.id_marca = marcas.id
+WHERE marcas.marca = 'LG';
+    
+SELECT 
+	compania 
+FROM companias 
+ORDER by compania;
+
+SELECT 
+	SUM(saldo) AS SumaSaldos
+FROM 
+	usuarios 
+JOIN companias ON usuarios.id_compania = companias.id
+WHERE  companias.compania = 'UNEFON';
+
+SELECT usuario AS Login, email AS EMail 
+FROM usuarios 
+WHERE email LIKE '%@hotmail.com';
+
+SELECT telefono AS Teléfono, saldo AS Saldo, activo AS Estado
+FROM usuarios
+WHERE saldo = 0 OR NOT activo;
+
+SELECT 
+	usuario AS Login, telefono AS Teléfono, compania AS Compañía
+FROM 
+	usuarios 
+JOIN companias ON usuarios.id_compania = companias.id
+WHERE 
+	companias.compania IN ('IUSACELL', 'TELCEL');
+    
+SELECT 
+	usuario AS Login, telefono AS Teléfono, compania AS Compañía
+FROM 
+	usuarios 
+JOIN companias ON usuarios.id_compania = companias.id
+WHERE 
+	companias.compania NOT IN ('MOTOROLA', 'NOKIA');
+    
+SELECT 
+	SUM(saldo) AS SumaSaldosTELCEL
+FROM 
+	usuarios 
+JOIN companias ON usuarios.id_compania = companias.id
+WHERE companias.compania = 'TELCEL';
