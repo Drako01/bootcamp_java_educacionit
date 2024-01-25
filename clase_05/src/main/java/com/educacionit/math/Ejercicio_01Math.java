@@ -13,7 +13,7 @@ public class Ejercicio_01Math {
 		double areaCirculo = Math.PI * Math.pow(valorRadio, 2);
 		
 		System.out.printf("El area del Circulo con Radio %.5f es: %.5f\n", valorRadio, areaCirculo);
-
+		scanner.close();
 	}
 
 }

@@ -19,6 +19,7 @@ public class Ejercicio_03_For {
 
 		}
 		System.out.println(new String(toUpperCase));
+		scanner.close();
 	}
 
 }

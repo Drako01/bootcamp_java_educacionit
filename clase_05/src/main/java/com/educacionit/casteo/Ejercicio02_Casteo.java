@@ -18,7 +18,7 @@ public class Ejercicio02_Casteo {
 		} else {
 			System.out.println("El Valor "  + unDouble + "  No tiene Decimales");
 		}
-		
+		scanner.close();
 	}
 
 }

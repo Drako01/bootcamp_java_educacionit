@@ -14,7 +14,7 @@ public class ejercicioScanner02 {
 		gradosF = 32 + (9 * grados / 5);
 
 		System.out.println(grados + " Grados Centígrados, equivalen a " + gradosF + " Grados Fahrenheit");
-
+		scanner.close();
 	}
 
 }

@@ -13,6 +13,7 @@ public class Ejercicio_02_For {
 		for(int i = 0; i < arrayString.length; i++) {
 			System.out.println((i+1) + ".- "+  arrayString[i]);
 		}
+		scanner.close();
 	}
 
 }

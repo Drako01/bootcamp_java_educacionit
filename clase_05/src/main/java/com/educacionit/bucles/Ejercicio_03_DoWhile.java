@@ -28,6 +28,7 @@ public class Ejercicio_03_DoWhile {
 		} while (valor != 0);
 		
 		System.out.println("Fin");
+		scanner.close();
 	}
 
 }

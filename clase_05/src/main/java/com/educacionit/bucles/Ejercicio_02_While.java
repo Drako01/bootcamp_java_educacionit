@@ -29,6 +29,7 @@ public class Ejercicio_02_While {
 		System.out.println("Cantidad de Numeros menores que Cero: " + contadorMenoresQueCero);
 		System.out.println("Cantidad de Numeros iguales a Cero: " + contadorIgualesACero);
 		System.out.println("Cantidad de Numeros mayores que Cero: " + contadorMayoresQueCero);
+		scanner.close();
 	}
 
 }

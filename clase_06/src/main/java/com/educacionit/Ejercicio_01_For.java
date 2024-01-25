@@ -26,6 +26,7 @@ public class Ejercicio_01_For {
 			System.out.println("El resultado de " + base + " elevado a " + exponente + " es igual a: " + resultado);
 		} while (base != 0 && exponente != 0);
 		System.out.println("Fin del Ciclo!");
+		scanner.close();
 	}
 
 }

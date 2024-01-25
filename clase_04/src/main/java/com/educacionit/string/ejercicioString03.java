@@ -28,6 +28,7 @@ public class ejercicioString03 {
 		} else {
 			System.out.println("Las Cadenas son Distintas");
 		}
+		scanner.close();
 	}
 
 }

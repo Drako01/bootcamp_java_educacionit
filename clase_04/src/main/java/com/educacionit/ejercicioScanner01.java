@@ -21,7 +21,7 @@ public class ejercicioScanner01 {
 		System.out.printf("Valor de la posicion 1: [%d]\n", array[0]);
 		System.out.printf("Valor de la posicion 2: [%d]\n", array[1]);
 		System.out.printf("Valor de la posicion 3: [%d]\n", array[2]);
-
+		scanner.close();
 	}
 
 }

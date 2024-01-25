@@ -5,13 +5,13 @@ public class Ejercicio01_Casteo {
 	public static void main(String[] args) {
 		int unInt = 10;
 		double unDouble;
-		float unFloat;
-		long unLong;
+		// float unFloat;
+		// long unLong;
 		short unShort;
 
 		unDouble = unInt; // (Casteo Implícito)
-		unFloat = unInt; // IDEM
-		unLong = unInt; // IDEM
+		// unFloat = unInt; // IDEM
+		// unLong = unInt; // IDEM
 		unShort = (short) unInt; // No se puede Castear Implicitamente > Se castea Explicitamente con ()
 
 		unDouble = 2.56;
