@@ -24,7 +24,8 @@ public class CalculadoraTest {
 
 			switch (operacion) {
 			case '+':
-				System.out.println("La suma de " + numA + " y " + numB + " es: " + Calculadora.sumar(numA, numB));
+				System.out.println("La suma de " + numA + " y " + numB + " es: " + 
+			Calculadora.sumar(numA, numB));
 				scanner.close();
 				return;
 			case '-':
