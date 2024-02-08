@@ -65,7 +65,7 @@ Agradezco a la comunidad de programadores y a los instructores del Bootcamp en E
   </a> 
    &nbsp
   <a href="#" target="_blank"> 
-  <img src="https://assets.stickpng.com/thumbs/62a78cbfe42d729d928b174e.png" alt="Apache Maven" width="120" /> 
+  <img src="https://static.educacionit.com/d/q_80/tecnologias/apache-maven/logo-color.svg" alt="Apache Maven" width="120" /> 
   </a> 
 </p>&nbsp
 
