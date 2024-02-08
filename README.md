@@ -46,13 +46,13 @@ Agradezco a la comunidad de programadores y a los instructores del Bootcamp en E
  </p>&nbsp
  <p align="center"> 
  <a href="#" target="_blank"> 
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="140" />
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="120" />
   </a> 
   <a href="#" target="_blank">  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="140" />
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="120" />
  </a> 
  <a href="#" target="_blank">  
-  <img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/javascript_original_logo_icon_146455.png" alt="javascript" width="140" />
+  <img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/javascript_original_logo_icon_146455.png" alt="javascript" width="120" />
  </a> 
  </p>&nbsp
   <p align="center"> 
