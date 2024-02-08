@@ -51,11 +51,23 @@ Agradezco a la comunidad de programadores y a los instructores del Bootcamp en E
   <a href="#" target="_blank">  
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="140" />
  </a> 
+ <a href="#" target="_blank">  
+  <img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/javascript_original_logo_icon_146455.png" alt="javascript" width="140" />
+ </a> 
+ </p>&nbsp
+  <p align="center"> 
 <a href="#" target="_blank"> 
-  <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="140" /> 
+  <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="120" /> 
+  </a>
+   &nbsp
+  <a href="#" target="_blank"> 
+  <img src="https://static-00.iconduck.com/assets.00/eclipse-icon-512x479-6ivkqawb.png" alt="Eclipse" width="120" /> 
+  </a> 
+   &nbsp
+  <a href="#" target="_blank"> 
+  <img src="https://assets.stickpng.com/thumbs/62a78cbfe42d729d928b174e.png" alt="Apache Maven" width="120" /> 
   </a> 
 </p>&nbsp
-
 
 ---
 
