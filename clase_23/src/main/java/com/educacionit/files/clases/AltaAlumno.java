@@ -5,38 +5,54 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class AltaAlumno {
-	
-	private String nombreArchivo;
-	
 
-	public AltaAlumno(String nombreArchivo) {
+	private String nombreArchivo;
+
+	private FileWriter writer;
+
+	public AltaAlumno(String nombreArchivo) throws IOException{
 		super();
 		this.nombreArchivo = nombreArchivo;
+		writer = new FileWriter(nombreArchivo);
 	}
 
 	public void agregarAlumno() {
-		Scanner scanner = new Scanner(System.in);
+	    Scanner scanner = new Scanner(System.in);
 
-		System.out.println("Ingrese Legajo: ");
-		Integer legajo = scanner.nextInt();
+	    System.out.println("Ingrese Legajo: ");
+	    Integer legajo = scanner.nextInt();
 
-		System.out.println("Ingrese Nombre: ");
-		String nombre = scanner.next();
+	    System.out.println("Ingrese Nombre: ");
+	    String nombre = scanner.next();
 
-		System.out.println("Ingrese Apellido: ");
-		String apellido = scanner.next();
+	    System.out.println("Ingrese Apellido: ");
+	    String apellido = scanner.next();
 
-		System.out.println("Ingrese Edad: ");
-		Integer edad = scanner.nextInt();
+	    scanner.nextLine();
 
+	    System.out.println("Ingrese Edad: ");
+	    Integer edad = scanner.nextInt();
+	    
+	    guardaAlumno(legajo, nombre, apellido, edad);
 	}
+
+
 
 	private void guardaAlumno(Integer legajo, String nombre, String apellido, Integer edad) {
 		try {
-			FileWriter writer = new FileWriter(nombreArchivo);
+
+			String registro = legajo + "," + nombre + "," + apellido + "," + edad + "\n";
+			writer.write(registro);
+			writer.flush();
+			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void close() throws IOException{
+		writer.close();
 	}
 }
