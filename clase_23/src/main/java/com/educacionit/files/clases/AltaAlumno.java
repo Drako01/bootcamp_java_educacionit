@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class AltaAlumno {
 
+	@SuppressWarnings("unused")
 	private String nombreArchivo;
 
 	private FileWriter writer;
