@@ -18,7 +18,9 @@ public class AltaAlumno {
 	}
 
 	public void agregarAlumno() {
-	    Scanner scanner = new Scanner(System.in);
+		
+	    @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
 
 	    System.out.println("Ingrese Legajo: ");
 	    Integer legajo = scanner.nextInt();
