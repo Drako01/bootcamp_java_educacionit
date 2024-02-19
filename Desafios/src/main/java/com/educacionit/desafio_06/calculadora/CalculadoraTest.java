@@ -12,60 +12,52 @@ public class CalculadoraTest {
 		double numA, numB;
 		char operacion;
 
-		System.out.println("Ingrese un número a: ");
+		System.out.println("Ingrese un número:");
 		numA = scanner.nextDouble();
-		System.out.println("Ingrese un número b: ");
+		System.out.println("Ingrese otro número:");
 		numB = scanner.nextDouble();
 		scanner.nextLine();
 
-		while (true) {
-			System.out.println("Ingrese la operación que desea realizar [+, -, *, /, %]: ");
-			operacion = scanner.nextLine().charAt(0);
+		System.out.println("Ingrese la operación que desea realizar [+, -, *, /, %]:");
+		operacion = scanner.nextLine().charAt(0);
 
-			switch (operacion) {
-			case '+':
-				System.out.println("La suma de " + numA + " y " + numB + " es: " + 
-			Calculadora.sumar(numA, numB));
-				scanner.close();
-				return;
-			case '-':
-				System.out.println("La resta de " + numA + " y " + numB + " es: " + Calculadora.restar(numA, numB));
-				scanner.close();
-				return;
-			case '*':
-				System.out.println(
-						"La multiplicación de " + numA + " y " + numB + " es: " + Calculadora.multiplicar(numA, numB));
-				scanner.close();
-				return;
-			case '/':
-				if (numB == 0) {
-					System.out.println("No se puede dividir por cero.");
-					scanner.close();
-					return;
-				}
-				try {
-					System.out.println(
-							"La división de " + numA + " entre " + numB + " es: " + Calculadora.dividir(numA, numB));
-					scanner.close();
-					return;
-				} catch (IllegalArgumentException e) {
-					System.out.println(e.getMessage());
-				}
-				break;
-			case '%':
-				if (numB == 0) {
-					System.out.println("No se puede calcular el resto de la división por cero.");
-					scanner.close();
-					return;
-				}
-				System.out.println("El resto de la división de " + numA + " entre " + numB + " es: "
-						+ Calculadora.calcularResto(numA, numB));
-				scanner.close();
-				return;
-			
+		Calculadora calculadora = new Calculadora(numA, numB, operacion);
+		calculadora.setA(numA);
+		calculadora.setB(numB);
+		calculadora.setOperador(operacion);
+
+		switch (operacion) {
+		case '+':
+			System.out.println("La suma de " + calculadora.getA() + " y " + calculadora.getB() + " es: "
+					+ calculadora.sumar(numA, numB));
+			break;
+		case '-':
+			System.out.println("La resta de " + calculadora.getA() + " y " + calculadora.getB() + " es: "
+					+ calculadora.restar(numA, numB));
+			break;
+		case '*':
+			System.out.println("La multiplicación de " + calculadora.getA() + " y " + calculadora.getB() + " es: "
+					+ calculadora.multiplicar(numA, numB));
+			break;
+		case '/':
+			try {
+				System.out.println("La división de " + calculadora.getA() + " entre " + calculadora.getB() + " es: "
+						+ calculadora.dividir(numA, numB));
+			} catch (IllegalArgumentException e) {
+				System.out.println(e.getMessage());
 			}
+			break;
+		case '%':
+			try {
+				System.out.println("El resto de la división de " + calculadora.getA() + " entre " + calculadora.getB()
+						+ " es: " + calculadora.calcularResto(numA, numB));
+			} catch (IllegalArgumentException e) {
+				System.out.println(e.getMessage());
+			}
+			break;
+		default:
+			System.out.println("Operación no válida.");
 		}
+		scanner.close();
 	}
 }
-
-
