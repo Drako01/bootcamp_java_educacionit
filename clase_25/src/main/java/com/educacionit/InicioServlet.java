@@ -1,12 +1,16 @@
 package com.educacionit;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.educacionit.model.Alumno;
 
 /**
  * Servlet implementation class InicioServlet
@@ -28,13 +32,18 @@ public class InicioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
 
-		PrintWriter printWriter = response.getWriter();
-		printWriter.append("<html>" + "<body>" + "<h2>Bienvenidos</h2>" + 
-		"<img src='https://avatars.githubusercontent.com/u/88512335?v=4' alt='Drako' />"
-		+ "</body>" + "</html>");
+		List<Alumno> alumnos = new ArrayList<>();
+		alumnos.add(new Alumno("Alumno1", 10));
+		alumnos.add(new Alumno("Alumno2", 30));
+		alumnos.add(new Alumno("Alumno3", 20));
+		alumnos.add(new Alumno("Alumno4", 24));
+
+		HttpSession session = request.getSession();
+
+		session.setAttribute("listaAlumnos", alumnos);
+
+		request.getRequestDispatcher("listado_alumnos.jsp").forward(request, response);
 	}
 
 	/**
