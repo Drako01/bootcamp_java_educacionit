@@ -10,11 +10,9 @@ public class Resultados {
 		double maxPromedio = 0; 
 
 		for (Alumno alumno : alumnos) {
-			double promedio = alumno.calcularPromedio();
-			if (promedio > maxPromedio) {
-				maxPromedio = promedio;
-			}
-		}
+	        double promedio = alumno.calcularPromedio();
+	        maxPromedio = Math.max(maxPromedio, promedio);
+	    }
 
 		for (Alumno alumno : alumnos) {
 			if (alumno.calcularPromedio() == maxPromedio) {
@@ -30,11 +28,9 @@ public class Resultados {
 		double minPromedio = 10; 
 
 		for (Alumno alumno : alumnos) {
-			double promedio = alumno.calcularPromedio();
-			if (promedio < minPromedio) {
-				minPromedio = promedio;
-			}
-		}
+	        double promedio = alumno.calcularPromedio();
+	        minPromedio = Math.min(minPromedio, promedio);
+	    }
 
 		for (Alumno alumno : alumnos) {
 			if (alumno.calcularPromedio() == minPromedio) {
