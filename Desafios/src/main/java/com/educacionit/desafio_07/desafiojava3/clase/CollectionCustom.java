@@ -2,6 +2,8 @@ package com.educacionit.desafio_07.desafiojava3.clase;
 
 import java.util.Arrays;
 
+import com.educacionit.desafio_07.desafiojava3.excepcion.NoCapacityException;
+
 public class CollectionCustom<T> {
 	private T[] array;
 	private int size;
@@ -79,13 +81,11 @@ public class CollectionCustom<T> {
 	}
 
 	private void verificarCapacidad() {
-		if (this.size == this.array.length) {
-			@SuppressWarnings("unchecked")
-			T[] newArray = (T[]) new Object[this.array.length * 2];
-			System.arraycopy(this.array, 0, newArray, 0, this.size);
-			this.array = newArray;
-		}
+	    if (this.size == this.array.length) {
+	        throw new NoCapacityException("No hay capacidad suficiente para agregar más elementos a la lista.");
+	    }
 	}
+
 
 	@Override
 	public String toString() {
