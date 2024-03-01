@@ -19,6 +19,10 @@ public class Main {
 		
 		coleccion.removeAllWhithDate(3);
 		System.out.println("Coleccion: " + coleccion);
+		coleccion.add(2);
+		System.out.println("Coleccion: " + coleccion);
+		coleccion.remove(2);
+		System.out.println("Coleccion: " + coleccion);
 		System.out.println("isEmpty: " + coleccion.empty());
 
 		CollectionCustom<String> coleccionString = new CollectionCustom<>();

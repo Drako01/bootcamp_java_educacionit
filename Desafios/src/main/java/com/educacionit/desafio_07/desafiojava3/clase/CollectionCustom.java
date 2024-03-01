@@ -39,7 +39,7 @@ public class CollectionCustom<T> {
 		addLast(dato);
 	}
 
-	public T remove(T dato) {
+	public T remove(T dato) { // Remueve de la lista el primer dato igual al parametro
 		for (int i = 0; i < this.size; i++) {
 			if (array[i].equals(dato)) {
 				T removedDato = array[i];
@@ -54,7 +54,7 @@ public class CollectionCustom<T> {
 		return null;
 	}
 
-	public void removeAllWhithDate(T dato) { // Elimina de la Lista el dato que se pasa por parametro
+	public void removeAllWhithDate(T dato) { // Elimina de la Lista todos los elementos iguales al dato que se pasa por parametro
 		for (int i = 0; i < this.size; i++) {
 			if (this.array[i].equals(dato)) {
 				for (int j = i; j < this.size - 1; j++) {
