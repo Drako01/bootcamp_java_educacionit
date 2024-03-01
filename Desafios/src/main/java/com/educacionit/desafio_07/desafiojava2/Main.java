@@ -10,8 +10,8 @@ public class Main {
     	System.out.println("Buenos días Operario!! \n");
         TorreControl torreControl = new TorreControl();
 
-        Avion avion1 = new Avion(true, "Aerolineas Latam - LAT409");
-        Avion avion2 = new Avion(false, "Aerolineas Argentinas - ARG026");
+        Avion avion1 = new Avion(false, "Aerolineas Latam - LAT409");
+        Avion avion2 = new Avion(true, "Aerolineas Argentinas - ARG026");
         Avion avion3 = new Avion(false, "American Airlines - AA402");
 
         torreControl.agregarAvion(avion1);
