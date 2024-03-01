@@ -1,63 +1,62 @@
 package com.educacionit.desafio_07.desafiojava1.clases;
 
 public class Alumno {
-    
-    private String nombre;
-    private String apellido;
-    private int[] numerosDeExamen;
-    private double[] notas;
-    
-    public Alumno(String nombre, String apellido, int cantidadExamenes) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.numerosDeExamen = new int[cantidadExamenes];
-        this.notas = new double[cantidadExamenes];
-    }
 
-    public String getNombre() {
-        return this.nombre;
-    }
+	private String nombre;
+	private String apellido;
+	private int[] numerosDeExamen;
+	private double[] notas;
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public Alumno(String nombre, String apellido, int cantidadExamenes) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.numerosDeExamen = new int[cantidadExamenes];
+		this.notas = new double[cantidadExamenes];
+	}
 
-    public String getApellido() {
-        return this.apellido;
-    }
+	public String getNombre() {
+		return this.nombre;
+	}
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public int[] getNumerosDeExamen() {
-        return this.numerosDeExamen;
-    }
+	public String getApellido() {
+		return this.apellido;
+	}
 
-    public void setNumerosDeExamen(int[] numerosDeExamen) {
-        this.numerosDeExamen = numerosDeExamen;
-    }
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-    public double[] getNotas() {
-        return this.notas;
-    }
+	public int[] getNumerosDeExamen() {
+		return this.numerosDeExamen;
+	}
 
-    public void setNotas(double[] notas) {
-        this.notas = notas;
-    }
+	public void setNumerosDeExamen(int[] numerosDeExamen) {
+		this.numerosDeExamen = numerosDeExamen;
+	}
 
-    public double calcularPromedio() {
-        double suma = 0;
-        for (double nota : this.notas) {
-            suma += nota;
-        }
-        return suma / this.notas.length;
-    }
+	public double[] getNotas() {
+		return this.notas;
+	}
 
-    @Override
-    public String toString() {
-        return "Alumno [Nombre= " + nombre + ", Apellido= " + apellido 
-        		+ ", Promedio= " + calcularPromedio() + "]";
-    }
+	public void setNotas(double[] notas) {
+		this.notas = notas;
+	}
+
+	public double calcularPromedio() {
+		double suma = 0;
+		for (double nota : this.notas) {
+			suma += nota;
+		}
+		return suma / this.notas.length;
+	}
+
+	@Override
+	public String toString() {
+		return "Alumno [Nombre= " + nombre + ", Apellido= " + apellido + ", Promedio= " + calcularPromedio() + "]";
+	}
 
 }

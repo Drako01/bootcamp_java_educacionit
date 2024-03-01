@@ -7,12 +7,12 @@ public class Resultados {
 
 	public static List<Alumno> encontrarCalificacionMasAlta(Alumno[] alumnos) {
 		List<Alumno> mejoresAlumnos = new ArrayList<>();
-		double maxPromedio = 0; 
+		double maxPromedio = 0;
 
 		for (Alumno alumno : alumnos) {
-	        double promedio = alumno.calcularPromedio();
-	        maxPromedio = Math.max(maxPromedio, promedio);
-	    }
+			double promedio = alumno.calcularPromedio();
+			maxPromedio = Math.max(maxPromedio, promedio);
+		}
 
 		for (Alumno alumno : alumnos) {
 			if (alumno.calcularPromedio() == maxPromedio) {
@@ -25,12 +25,12 @@ public class Resultados {
 
 	public static List<Alumno> encontrarCalificacionMasBaja(Alumno[] alumnos) {
 		List<Alumno> peoresAlumnos = new ArrayList<>();
-		double minPromedio = 10; 
+		double minPromedio = 10;
 
 		for (Alumno alumno : alumnos) {
-	        double promedio = alumno.calcularPromedio();
-	        minPromedio = Math.min(minPromedio, promedio);
-	    }
+			double promedio = alumno.calcularPromedio();
+			minPromedio = Math.min(minPromedio, promedio);
+		}
 
 		for (Alumno alumno : alumnos) {
 			if (alumno.calcularPromedio() == minPromedio) {

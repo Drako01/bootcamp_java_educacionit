@@ -21,7 +21,7 @@ public class Main {
 				cantidadAlumnos = scanner.nextInt();
 				scanner.nextLine();
 				entradaValida = true;
-			} catch (InputMismatchException e) {
+			} catch (InputMismatchException ex) {
 				System.out.println("Error: Ingrese un número entero válido.");
 				scanner.nextLine();
 			}
