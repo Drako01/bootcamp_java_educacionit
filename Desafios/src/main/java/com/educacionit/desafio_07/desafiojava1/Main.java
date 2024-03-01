@@ -1,5 +1,6 @@
 package com.educacionit.desafio_07.desafiojava1;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,9 +12,20 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 
-		System.out.print("Ingrese la cantidad de alumnos a procesar: ");
-		int cantidadAlumnos = scanner.nextInt();
-		scanner.nextLine();
+		int cantidadAlumnos = 0;
+		boolean entradaValida = false;
+
+		while (!entradaValida) {
+			try {
+				System.out.print("Ingrese la cantidad de alumnos a procesar: ");
+				cantidadAlumnos = scanner.nextInt();
+				scanner.nextLine();
+				entradaValida = true;
+			} catch (InputMismatchException e) {
+				System.out.println("Error: Ingrese un número entero válido.");
+				scanner.nextLine();
+			}
+		}
 
 		Alumno[] alumnos = new Alumno[cantidadAlumnos];
 
@@ -23,17 +35,43 @@ public class Main {
 			String nombre = scanner.nextLine();
 			System.out.print("Apellido: ");
 			String apellido = scanner.nextLine();
-			System.out.print("Cantidad de exámenes: ");
-			int cantidadExamenes = scanner.nextInt();
-			scanner.nextLine();
+			int cantidadExamenes = 0;
+			entradaValida = false;
 
+			while (!entradaValida) {
+				try {
+					System.out.print("Cantidad de exámenes: ");
+					cantidadExamenes = scanner.nextInt();
+					scanner.nextLine();
+					entradaValida = true;
+				} catch (InputMismatchException ex) {
+					System.out.println("Error: Ingrese un número entero válido.");
+					scanner.nextLine();
+				}
+			}
 			Alumno alumno = new Alumno(nombre, apellido, cantidadExamenes);
 
 			for (int j = 1; j <= cantidadExamenes; j++) {
-			    System.out.print("Nota del Exámen " + j + ": ");
-			    double nota = scanner.nextDouble();
-			    scanner.nextLine();
-			    alumno.getNotas()[j - 1] = nota;
+				double nota = 0;
+				entradaValida = false;
+
+				while (!entradaValida) {
+					try {
+						System.out.print("Nota del Exámen " + j + ": ");
+						nota = scanner.nextDouble();
+						scanner.nextLine();
+						if (nota < 0 || nota > 10) {
+							System.out.println("Error: La nota debe estar entre 0 y 10.");
+						} else {
+							entradaValida = true;
+						}
+					} catch (InputMismatchException ex) {
+						System.out.println("Error: Ingrese un número válido para la nota.");
+						scanner.nextLine();
+					}
+				}
+
+				alumno.getNotas()[j - 1] = nota;
 			}
 
 			alumnos[i] = alumno;
