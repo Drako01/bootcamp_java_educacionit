@@ -1,4 +1,4 @@
-package com.educacionit.desafio_07.desafiojava1;
+package com.educacionit.desafio_07.desafiojava1.clases;
 
 public class Alumno {
     

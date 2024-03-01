@@ -3,7 +3,10 @@ package com.educacionit.desafio_07.desafiojava1;
 import java.util.List;
 import java.util.Scanner;
 
-public class CargaDeDatos {
+import com.educacionit.desafio_07.desafiojava1.clases.Alumno;
+import com.educacionit.desafio_07.desafiojava1.clases.Resultados;
+
+public class Main {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
