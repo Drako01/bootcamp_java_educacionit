@@ -5,15 +5,15 @@ public class Alumno {
 	private String nombre;
 	private Integer legajo;
 	private Integer edad;
-	private static int contadorLegajo = 1000;
+	
 
 	public Alumno() {
-		super();
-		this.legajo = ++Alumno.contadorLegajo;
+		super();		
 	}
 
-	public Alumno(String nombre, Integer edad) {
+	public Alumno(Integer legajo, String nombre, Integer edad) {
 		this();
+		this.legajo = legajo;
 		this.nombre = nombre;
 		this.edad = edad;
 	}

@@ -1,17 +1,18 @@
 <%@page session="true"%>
 <%@page errorPage="error.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!--  Especifica el prefijo que se utilizará para acceder a las etiquetas de la biblioteca importada. En este caso, el prefijo "c" se utilizará para acceder a las etiquetas de JSTL Core en el archivo JSP. -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!-- fmt: Este prefijo se utiliza para formatear y presentar datos, como fechas, números y mensajes. -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!-- fn: Este prefijo se utiliza para acceder a las funciones de utilidad proporcionadas por JSTL, como operaciones de cadena, colección y manipulación de fechas. -->
 
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Listado de Alumnos</title>
+<link rel="stylesheet" href="./css/styles.css">
+
 </head>
 <body>
 
@@ -24,6 +25,7 @@
 
 
 	<h2>Listado de Alumnos</h2>
+
 	<table border="1">
 		<tr>
 			<th>Legajo</th>
@@ -38,7 +40,18 @@
 			</tr>
 		</c:forEach>
 	</table>
-	
+	<hr>
+
+	<h3>
+		<a href="alta_alumno.jsp">Alta Alumno</a>
+	</h3>
+	<h3>
+		<a href="BorrarAlumnoServlet">Baja Alumno</a>
+	</h3>
+	<br>
+	<h3>
+		<a href="LimpiarSessionServlet">Limpiar Sesion</a>
+	</h3>
 
 </body>
 </html>

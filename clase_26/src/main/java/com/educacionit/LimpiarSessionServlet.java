@@ -1,29 +1,23 @@
 package com.educacionit;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.educacionit.model.Alumno;
-
 /**
- * Servlet implementation class InicioServlet
+ * Servlet implementation class LimpiarSessionServlet
  */
-public class InicioServlet extends HttpServlet {
+public class LimpiarSessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public InicioServlet() {
+	public LimpiarSessionServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -32,19 +26,10 @@ public class InicioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		HttpSession session = request.getSession();
+		session.invalidate();
 		
-		List<Alumno> alumnos = (List<Alumno>)session.getAttribute("listaAlumnos");
-		
-		if(alumnos == null) {
-			alumnos = new ArrayList<Alumno>();
-			session.setAttribute("listaAlumnos", alumnos);
-		}
-
-		//Forward
-		request.getRequestDispatcher("listado_alumnos.jsp").forward(request, response);
-	}
+		response.sendRedirect("index.jsp");	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -52,8 +37,8 @@ public class InicioServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
+
 	}
 
 }

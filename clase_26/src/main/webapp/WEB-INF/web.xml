@@ -13,8 +13,38 @@
 		<description></description>
 		<servlet-class>com.educacionit.InicioServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AgregarAlumnoServlet</servlet-name>
+		<display-name>AgregarAlumnoServlet</display-name>
+		<description></description>
+		<servlet-class>com.educacionit.AgregarAlumnoServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>BorrarAlumnoServlet</servlet-name>
+		<display-name>BorrarAlumnoServlet</display-name>
+		<description></description>
+		<servlet-class>com.educacionit.BorrarAlumnoServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>LimpiarSessionServlet</servlet-name>
+		<display-name>LimpiarSessionServlet</display-name>
+		<description></description>
+		<servlet-class>com.educacionit.LimpiarSessionServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>InicioServlet</servlet-name>
 		<url-pattern>/InicioServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AgregarAlumnoServlet</servlet-name>
+		<url-pattern>/AgregarAlumnoServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BorrarAlumnoServlet</servlet-name>
+		<url-pattern>/BorrarAlumnoServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LimpiarSessionServlet</servlet-name>
+		<url-pattern>/LimpiarSessionServlet</url-pattern>
 	</servlet-mapping>
 </web-app>
