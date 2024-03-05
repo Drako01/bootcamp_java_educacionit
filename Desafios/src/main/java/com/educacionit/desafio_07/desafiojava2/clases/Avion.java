@@ -1,9 +1,10 @@
 package com.educacionit.desafio_07.desafiojava2.clases;
 
 import com.educacionit.desafio_07.desafiojava2.interfaces.AterrizajeInterface;
+import com.educacionit.desafio_07.desafiojava2.interfaces.ContratoAterrizaje;
 import com.educacionit.desafio_07.desafiojava2.interfaces.VoladorInterface;
 
-public class Avion implements VoladorInterface, AterrizajeInterface {
+public class Avion implements VoladorInterface, AterrizajeInterface, ContratoAterrizaje {
 	private boolean autorizacionOperador;
 	private String nombre;
 
@@ -14,15 +15,14 @@ public class Avion implements VoladorInterface, AterrizajeInterface {
 
 	@Override
 	public void volar() {
-		System.out.println("El vuelo: " + this.nombre + 
-				" está solicitado Autorización para Aterrizaje.");
+		System.out.println("El vuelo: " + this.nombre + " está solicitado Autorización para Aterrizaje.");
 	}
 
 	@Override
 	public void aterrizar() {
 		System.out.println("El vuelo: " + this.nombre + " está Aterrizando.!.");
 	}
-	
+
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -36,5 +36,8 @@ public class Avion implements VoladorInterface, AterrizajeInterface {
 		return autorizacionOperador;
 	}
 
-	
+	@Override
+	public boolean tieneContrato() {
+		return this.autorizacionOperador;
+	}
 }

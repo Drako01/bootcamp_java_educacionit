@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.educacionit.desafio_07.desafiojava2.excepcion.RespuestaInvalidaException;
+import com.educacionit.desafio_07.desafiojava2.interfaces.ContratoAterrizaje;
 
 public class TorreControl {
 	private List<Avion> aviones;
@@ -20,7 +21,7 @@ public class TorreControl {
 
 	public void gestionarAterrizaje() throws RespuestaInvalidaException {
 		for (Avion avion : aviones) {
-			if (avion.puedeAterrizar()) {
+			if (avion instanceof ContratoAterrizaje && avion.tieneContrato()) {
 				avion.volar();
 				System.out.println("El vuelo de: " + avion.getNombre() + " tiene un contrato correcto.\n"
 						+ "El operario confirma el aterrizaje en la PISTA 1.\n"
