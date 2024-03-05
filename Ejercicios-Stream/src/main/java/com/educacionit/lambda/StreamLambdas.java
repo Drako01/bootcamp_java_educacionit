@@ -17,7 +17,7 @@ public class StreamLambdas {
 
 		List<Integer> pares = numeros.stream()
 								.filter(num -> num % 2 == 0)
-								.toList();
+								.collect(Collectors.toList());
 
 		System.out.println("Números pares: " + pares);
 
@@ -29,7 +29,7 @@ public class StreamLambdas {
 		System.out.println("Lista original: " + numeros);
 		List<Integer> potenciados = numeros.stream()
 										.map(num -> num * num)
-										.toList();
+										.collect(Collectors.toList());
 
 		System.out.println("Elementos elevados al cuadrado: " + potenciados);
 
@@ -93,22 +93,37 @@ public class StreamLambdas {
 
         System.out.println("Lista original: " + cadenas);
        
-        List<String> sinDuplicados = cadenas.stream()
-                                            .distinct()
-                                            .collect(Collectors.toList());
+        //Creando una Coleccion de String
+        List<String> sinDuplicados = 
+        		cadenas.stream()
+                           .distinct()
+                           .collect(Collectors.toList());
 
         System.out.println("Lista sin duplicados: " + sinDuplicados);
+        
+        //Creando un Mapa
+        Map<String, String> miMapa = cadenas.stream()
+        	.distinct()
+        	.collect(Collectors.toMap(
+        			c-> c, //Key
+        			c -> (c.length() + c) //Value
+        		));
+        for (Map.Entry<String, String> entry : miMapa.entrySet()) {
+        	String key = entry.getKey();
+        	String val = entry.getValue();
+			
+        	System.out.println("Mapa sin duplicados: Key: " + key + " Value: "+ val);
+		}
 	}
 	
 	public void ejercicio08() {
 		List<Integer> numeros = Arrays.asList(16, 12, 32, 45, 15);
 
 		System.out.println("Lista original: " + numeros);
-		double suma = numeros.stream()
-		                .mapToDouble(Integer::doubleValue)
-		                .sum();
+		double promedio = numeros.stream()
+				                .mapToDouble(Integer::doubleValue)
+				                .average().orElse(0);
 
-		double promedio = suma / numeros.size();
 		System.out.println("El Promedio es: " + promedio);
 
 	}
@@ -119,8 +134,9 @@ public class StreamLambdas {
         System.out.println("Lista original: " + cadenas);
        
         List<String> enMayusculas = cadenas.stream()
-                                            .map(cadena -> cadena.toUpperCase())
-                                            .toList();
+                                            //.map(cadena -> cadena.toUpperCase())
+                                            .map(String::toUpperCase)
+                                            .collect(Collectors.toList());
 
         System.out.println("Lista en Mayusculas: " + enMayusculas);
 	}
@@ -185,7 +201,7 @@ public class StreamLambdas {
 
 		List<Integer> divisiblesPorSiete = numeros.stream()
 								.filter(num -> num % 7 == 0)
-								.toList();
+								.collect(Collectors.toList());
 
 		System.out.println("Números divisibles por 7: " + divisiblesPorSiete);
 
@@ -222,11 +238,11 @@ public class StreamLambdas {
 
 		List<Integer> pares = numeros.stream()
 								.filter(num -> num % 2 == 0)
-								.toList();
+								.collect(Collectors.toList());
 		
 		List<Integer> cuadrados = pares.stream()
 								.map(num -> num * num)
-								.toList();
+								.collect(Collectors.toList());
 		System.out.println("Lista de los Cuadrados: " + cuadrados);
 		int sumaCuadrados = cuadrados.stream()
 				                .mapToInt(Integer::intValue)
