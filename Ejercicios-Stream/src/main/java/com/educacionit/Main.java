@@ -6,7 +6,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		StreamLambdas streamLambdas = new StreamLambdas();
-		streamLambdas.ejercicio01();
+		/*streamLambdas.ejercicio01();
 		streamLambdas.ejercicio02();
 		streamLambdas.ejercicio03();
 		streamLambdas.ejercicio04();
@@ -24,7 +24,7 @@ public class Main {
 		streamLambdas.ejercicio16();
 		streamLambdas.ejercicio17();
 		streamLambdas.ejercicio18();
-		streamLambdas.ejercicio19();
+		streamLambdas.ejercicio19();*/
 		streamLambdas.ejercicio20();
 	}
 

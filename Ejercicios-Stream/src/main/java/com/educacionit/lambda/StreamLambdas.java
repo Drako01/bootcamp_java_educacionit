@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -149,9 +150,9 @@ public class StreamLambdas {
 	     System.out.println("Lista 2: " + cadena2);
 
 	       
-	     List<String> cadenas = Stream.concat(cadena1.stream(), cadena2.stream())
+	     Set<String> cadenas = Stream.concat(cadena1.stream(), cadena2.stream())
 	                                     .distinct()
-	                                     .collect(Collectors.toList());
+	                                     .collect(Collectors.toSet());
 
 	     System.out.println("Lista combinada sin duplicados: " + cadenas);									
 		
@@ -163,11 +164,12 @@ public class StreamLambdas {
 		
 		 System.out.println("Lista Original: " + cadena);
 		 
-		 List<String> empiezanConA = cadena.stream()
+		 //List<String> empiezanConA = 
+				 cadena.stream()
                  				.filter(nombre -> nombre.startsWith("A"))
-                 				.collect(Collectors.toList());
+                 				.forEach(System.out::println);
 
-		 System.out.println("Nombres que empiezan con 'A': " + empiezanConA);
+		 //System.out.println("Nombres que empiezan con 'A': " + empiezanConA);
 				 						
 	}
 	
@@ -178,7 +180,9 @@ public class StreamLambdas {
         Map<String, Integer> conteoCaracteres = cadenas.stream()
                                                        .collect(Collectors.toMap(
                                                            cadena -> cadena,
-                                                           cadena -> cadena.length()));
+                                                           cadena -> cadena.length()
+                                                           )
+                                                    	);
 
         System.out.println("Cantidad de caracteres por cadena: " + conteoCaracteres);
     }
@@ -232,20 +236,14 @@ public class StreamLambdas {
 	
 	public void ejercicio17() {
 		
-		List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		List<Integer> numeros = Arrays.asList( 2, 4, 5, 9);
 
 		System.out.println("Lista original: " + numeros);
 
-		List<Integer> pares = numeros.stream()
-								.filter(num -> num % 2 == 0)
-								.collect(Collectors.toList());
 		
-		List<Integer> cuadrados = pares.stream()
-								.map(num -> num * num)
-								.collect(Collectors.toList());
-		System.out.println("Lista de los Cuadrados: " + cuadrados);
-		int sumaCuadrados = cuadrados.stream()
-				                .mapToInt(Integer::intValue)
+		int sumaCuadrados = numeros.stream()
+								.filter(num -> num % 2 == 0)
+				                .mapToInt(num -> num * num)
 				                .sum();
 
 		System.out.println("Suma de los Cuadrados de los Pares: " + sumaCuadrados);
@@ -254,12 +252,16 @@ public class StreamLambdas {
 	
 	public void ejercicio18() {
 		List<String> cadena = Arrays.asList("Hola", "Mundo", "Hola", "Java", "Mundo");
-		System.out.println("Lista original: " + cadena);
+		 System.out.println("Lista original: " + cadena);
 		
 		 String concatenadas = cadena.stream()
                  				.collect(Collectors.joining());
 
-		 System.out.println("Cadenas concatenadas: " + concatenadas);
+		 System.out.println("Cadenas concatenadas con joining: " + concatenadas);
+		 concatenadas = cadena.stream()
+  								.reduce("", (a,b) -> a + b);
+
+		 System.out.println("Cadenas concatenadas con reduce: " + concatenadas);
 		
 	}
 	
@@ -269,17 +271,8 @@ public class StreamLambdas {
 
         System.out.println("Cadena 1: " + cadena1);
         System.out.println("Cadena 2: " + cadena2);
-
        
-        List<String> cadenaOrden1 = cadena1.stream()
-                                           .sorted()
-                                           .collect(Collectors.toList());
-        List<String> cadenaOrden2 = cadena2.stream()
-                                           .sorted()
-                                           .collect(Collectors.toList());
-
-       
-        List<String> cadenasOrdenadas = Stream.concat(cadenaOrden1.stream(), cadenaOrden2.stream())
+        List<String> cadenasOrdenadas = Stream.concat(cadena1.stream(), cadena2.stream())
                                               .distinct()
                                               .sorted()
                                               .collect(Collectors.toList());
@@ -291,7 +284,8 @@ public class StreamLambdas {
 	public void ejercicio20() {
 		List<Integer> numeros = Arrays.asList(3, 8, 12, 15, 18, 20, 25);
 
-        System.out.println("Lista original: " + numeros);       
+        System.out.println("Lista original: " + numeros);    
+        /*
         Optional<Integer> primerDivisiblePor5 = numeros.stream()
                                                       .filter(num -> num % 5 == 0)
                                                       .findFirst();
@@ -300,8 +294,12 @@ public class StreamLambdas {
             System.out.println("El primer número divisible por 5 es: " + primerDivisiblePor5.get());
         } else {
             System.out.println("No se encontró ningún número divisible por 5 en la lista.");
-        }
-	
+        }*/
+        Integer primerDivisiblePor5 = numeros.stream()
+						                .filter(num -> num % 5 == 0)
+						                .findFirst().orElse(0);
+        
+        System.out.println("El primer número divisible por 5 es: " + primerDivisiblePor5);
 	}
 }
 
