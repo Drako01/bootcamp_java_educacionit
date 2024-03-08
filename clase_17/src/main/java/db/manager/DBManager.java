@@ -36,8 +36,11 @@ public class DBManager implements Closeable{
 	public void verificarYCrearTabla() throws DBManagerException {
 		String table = "alumnos";
 		try (Statement statement = conn.createStatement()) {
-			String query = "CREATE TABLE IF NOT EXISTS " + table + " (" + "legajo INT PRIMARY KEY,"
-					+ "nombre VARCHAR(255) NOT NULL," + "edad INT NOT NULL," + "especialidad VARCHAR(255) NOT NULL)";
+			String query = "CREATE TABLE IF NOT EXISTS " + table 
+							+ " (" + "legajo INT PRIMARY KEY,"
+							+ "nombre VARCHAR(255) NOT NULL," 
+							+ "edad INT NOT NULL," 
+							+ "especialidad VARCHAR(255) NOT NULL)";
 			statement.executeUpdate(query);
 			System.out.println("Tabla " + table + " verificada y creada si no existía");
 		} catch (SQLException e) {
