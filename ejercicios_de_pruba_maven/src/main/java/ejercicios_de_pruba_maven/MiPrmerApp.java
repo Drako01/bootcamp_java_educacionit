@@ -19,7 +19,7 @@ public class MiPrmerApp {
 		controller.getConnection();
 		
 		ConfigurableApplicationContext context = SpringApplication.run(MiPrmerApp.class, args);
-
+		controller.closeConnection();
 	}
 
 }

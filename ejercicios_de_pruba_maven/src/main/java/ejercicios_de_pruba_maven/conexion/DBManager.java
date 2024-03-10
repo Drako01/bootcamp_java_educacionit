@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import ejercicios_de_pruba_maven.entidad.Alumno;
+import ejercicios_de_pruba_maven.entidad.Curso;
 
 public class DBManager {
 	private static final String DATABASE_NAME = "coderhouse";
@@ -45,7 +46,7 @@ public class DBManager {
 	public void mostrarAlumnos() {
 		Statement statement = null;
 		ResultSet resultSet = null;
-		String query = "SELECT dni, nombre, apellido, legajo FROM alumnos";
+		String query = "SELECT dni, nombre, apellido, legajo, id_curso FROM alumnos";
 		try {
 
 			statement = connection.createStatement();
@@ -56,9 +57,11 @@ public class DBManager {
 				String nombre = resultSet.getString("nombre");
 				String apellido = resultSet.getString("apellido");
 				String legajo = resultSet.getString("legajo");
+				Integer id_curso = resultSet.getInt("id_curso");
 
 				System.out.println("Alumno con DNI Nro " + dni + " es " + nombre + " " + apellido
-						+ ", y su Legajo es el Nro: " + legajo);
+						+ ", y su Legajo es el Nro: " + legajo
+						+ ", y asiste al Curso con ID: " + id_curso);
 			}
 
 		} catch (SQLException e) {
@@ -81,7 +84,7 @@ public class DBManager {
 	public void mostrarAlumnoPorDNI(Integer dni) {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		String query = "SELECT nombre, apellido, legajo FROM alumnos WHERE dni = ?";
+		String query = "SELECT nombre, apellido, legajo, id_curso FROM alumnos WHERE dni = ?";
 
 		try {
 
@@ -93,9 +96,11 @@ public class DBManager {
 				String nombre = resultSet.getString("nombre");
 				String apellido = resultSet.getString("apellido");
 				String legajo = resultSet.getString("legajo");
+				String id_curso = resultSet.getString("id_curso");
 
 				System.out.println("Alumno con DNI Nro " + dni + " Es: " + nombre + " " + apellido
-						+ ", y su Legajo es el Nro: " + legajo );
+						+ ", y su Legajo es el Nro: " + legajo 
+						+ ", y asiste al Curso con ID: " + id_curso);
 			} else {
 				System.out.println("No se encontró ningún alumno con DNI: " + dni);
 			}
@@ -118,15 +123,15 @@ public class DBManager {
 	public void insertarAlumno(Alumno alumno) {
 
 		PreparedStatement statement = null;
-		String query = "INSERT INTO alumnos (dni, nombre, apellido, legajo) VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO alumnos (dni, apellido, id_curso, legajo, nombre) VALUES (?, ?, ?, ?, ?)";
 
 		try {
 			statement = connection.prepareStatement(query);
 			statement.setInt(1, alumno.getDni());
-			statement.setString(2, alumno.getNombre());
-			statement.setString(3, alumno.getApellido());
+			statement.setString(2, alumno.getApellido());
+			statement.setInt(3, alumno.getIdCurso());
 			statement.setInt(4, alumno.hashCode());
-
+			statement.setString(5, alumno.getNombre());
 			int rowsAffected = statement.executeUpdate();
 
 			if (rowsAffected == 0) {
@@ -151,17 +156,18 @@ public class DBManager {
 		}
 	}
 
-	public void modificarAlumno(Integer dni, String nuevoNombre, String nuevoApellido) {
+	public void modificarAlumno(Integer dni, String nuevoNombre, String nuevoApellido, Integer id_curso) {
 
 		PreparedStatement statement = null;
 
 		try {
-			String query = "UPDATE alumnos SET nombre = ?, apellido = ? WHERE dni = ?";
+			String query = "UPDATE alumnos SET nombre = ?, apellido = ?, id_curso = ?  WHERE dni = ?";
 			statement = connection.prepareStatement(query);
 
 			statement.setString(1, nuevoNombre);
 			statement.setString(2, nuevoApellido);
-			statement.setInt(3, dni);
+			statement.setInt(3, id_curso);
+			statement.setInt(4, dni);
 
 			int rowsAffected = statement.executeUpdate();
 
@@ -243,5 +249,35 @@ public class DBManager {
 			}
 		}
 	}
+	
+	public void insertarCurso(Curso curso) {
+	    PreparedStatement statement = null;
+	    String query = "INSERT INTO cursos (descripcion, titulo) VALUES (?, ?)";
+
+	    try {
+	        statement = connection.prepareStatement(query);
+	        statement.setString(1, curso.getDescripcion());
+	        statement.setString(2, curso.getTitulo());
+
+	        int rowsAffected = statement.executeUpdate();
+
+	        if (rowsAffected == 0) {
+	            throw new SQLException("No se pudo insertar el curso: " + curso.getTitulo());
+	        }
+	        System.out.println("El curso: " + curso.getTitulo() + " fue insertado correctamente");
+
+	    } catch (SQLException e) {
+	        System.err.println(e.getMessage());
+	    } finally {
+	        try {
+	            if (statement != null) {
+	                statement.close();
+	            }
+	        } catch (SQLException e) {
+	            System.err.println("Error al cerrar el statement: " + e.getMessage());
+	        }
+	    }
+	}
+
 
 }

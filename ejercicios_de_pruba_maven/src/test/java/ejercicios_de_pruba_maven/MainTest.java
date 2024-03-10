@@ -21,7 +21,9 @@ public class MainTest {
 		curso2.setTitulo("Curso de Spring Boot");
 		curso2.setDescripcion("Desarrollo de aplicaciones web con Spring Boot");
 
-	
+		controller.insertarCurso(curso1);
+		controller.insertarCurso(curso2);
+		
 		Alumno alumno = new Alumno();
 
 		// Creamos algunos alumnos
@@ -31,6 +33,7 @@ public class MainTest {
 			alumno.setNombre("Nombre" + i);
 			alumno.setApellido("Apellido" + i);
 			alumno.setLegajo(alumno.hashCode());
+			alumno.setIdCurso(1); 
 			controller.insertarAlumno(alumno);
 		}
 
@@ -44,14 +47,12 @@ public class MainTest {
 		alumno.setNombre("Alejandro");
 		alumno.setApellido("Di Stefano");		
 		alumno.setLegajo(alumno.hashCode());
+		alumno.setIdCurso(1);
 		controller.insertarAlumno(alumno);
 
-		controller.modificarAlumno(1000006, "NuevoNombre", "NuevoApellido");
+		controller.modificarAlumno(1000006, "NuevoNombre", "NuevoApellido", 1);
 		controller.mostrarAlumnoPorDNI(1000006);
-		/*
-		controller.eliminarTabla("alumnos");
-		controller.eliminarTabla("cursos");
-		*/
+		
 		controller.closeConnection();
 
 	}
