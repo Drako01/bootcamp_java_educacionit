@@ -1,10 +1,13 @@
 package ejercicios_de_pruba_maven.entidad;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,9 @@ public class Curso {
 	private String descripcion;
 
 		
+	@OneToMany(mappedBy = "curso")
+	private List<Alumno> alumnos;
+	
 	public Curso() {
 		super();
 	}

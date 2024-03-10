@@ -10,6 +10,7 @@ public class MainDropTables {
 		
 		controller.eliminarTabla("alumnos");
 		controller.eliminarTabla("cursos");
+		
 		controller.closeConnection();
 	}
 

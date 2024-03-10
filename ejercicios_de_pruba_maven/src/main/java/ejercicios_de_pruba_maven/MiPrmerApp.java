@@ -14,12 +14,10 @@ import ejercicios_de_pruba_maven.conexion.DBManager;
 public class MiPrmerApp {
 
 	public static void main(String[] args) {
-
-		DBManager controller = new DBManager();
-		controller.getConnection();
 		
-		ConfigurableApplicationContext context = SpringApplication.run(MiPrmerApp.class, args);
-		controller.closeConnection();
+		ConfigurableApplicationContext context = SpringApplication
+										.run(MiPrmerApp.class, args);
+		
 	}
 
 }
