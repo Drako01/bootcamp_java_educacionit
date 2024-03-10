@@ -11,7 +11,7 @@ public class MainTest {
 		DBManager controller = new DBManager();
 		controller.getConnection();
 		
-		
+		/*
 		// Creamos algunos cursos
 		Curso curso1 = new Curso();
 		curso1.setTitulo("Curso de Java");
@@ -23,9 +23,9 @@ public class MainTest {
 
 		controller.insertarCurso(curso1);
 		controller.insertarCurso(curso2);
-		
+		*/
 		Alumno alumno = new Alumno();
-
+/*
 		// Creamos algunos alumnos
 		for (int i = 1; i <= 10; i++) {
 
@@ -49,9 +49,9 @@ public class MainTest {
 		alumno.setLegajo(alumno.hashCode());
 		alumno.setIdCurso(1);
 		controller.insertarAlumno(alumno);
-
-		controller.modificarAlumno(1000006, "NuevoNombre", "NuevoApellido", 1);
-		controller.mostrarAlumnoPorDNI(1000006);
+*/
+		controller.modificarAlumno(1000006, "NuevoNombre", "NuevoApellido", 3);
+		//controller.mostrarAlumnoPorDNI(1000006);
 		
 		controller.closeConnection();
 

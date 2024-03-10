@@ -126,6 +126,11 @@ public class DBManager {
 		String query = "INSERT INTO alumnos (dni, apellido, id_curso, legajo, nombre) VALUES (?, ?, ?, ?, ?)";
 
 		try {
+			
+			if (!existeCurso(alumno.getIdCurso())) {
+	            throw new SQLException("El curso con ID " + alumno.getIdCurso() + " no existe en la tabla cursos");
+	        }
+			
 			statement = connection.prepareStatement(query);
 			statement.setInt(1, alumno.getDni());
 			statement.setString(2, alumno.getApellido());
@@ -161,6 +166,9 @@ public class DBManager {
 		PreparedStatement statement = null;
 
 		try {
+			if (!existeCurso(id_curso)) {
+	            throw new SQLException("El curso con ID " + id_curso + " no existe en la tabla cursos");
+	        }
 			String query = "UPDATE alumnos SET nombre = ?, apellido = ?, id_curso = ?  WHERE dni = ?";
 			statement = connection.prepareStatement(query);
 
@@ -220,7 +228,6 @@ public class DBManager {
 			}
 		}
 	}
-
 	
 	public void eliminarTabla(String nombreTabla) {
 		Statement statement = null;
@@ -279,5 +286,18 @@ public class DBManager {
 	    }
 	}
 
-
+	private boolean existeCurso(Integer idCurso) {
+	    String query = "SELECT COUNT(*) FROM cursos WHERE id_curso = ?";
+	    try (PreparedStatement statement = connection.prepareStatement(query)) {
+	        statement.setInt(1, idCurso);
+	        ResultSet resultSet = statement.executeQuery();
+	        if (resultSet.next()) {
+	            int count = resultSet.getInt(1);
+	            return count > 0;
+	        }
+	    } catch (SQLException e) {
+	        System.err.println("Error al verificar si existe el curso: " + e.getMessage());
+	    }
+	    return false;
+	}
 }
