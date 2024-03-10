@@ -5,8 +5,6 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,15 +20,6 @@ public class Alumno {
 	@Column(name = "LEGAJO")
 	private Integer legajo;
 
-	/*
-	 * @ManyToOne
-	 * 
-	 * @JoinColumn(name = "ID_CURSO") private Curso curso;
-	 * 
-	 * @Column(name = "ID_CURSO", insertable = false, updatable = false) private
-	 * Integer idCurso;
-	 */
-	
 	
 	public Alumno() {
 		super();
@@ -68,16 +57,7 @@ public class Alumno {
 		this.legajo = legajo;
 	}
 
-	/*
-	 * public Curso getCurso() { return curso; }
-	 * 
-	 * public void setCurso(Curso curso) { this.curso = curso; }
-	 * 
-	 * public Integer getIdCurso() { return idCurso; }
-	 * 
-	 * public void setIdCurso(Integer idCurso) { this.idCurso = idCurso; }
-	 */
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(legajo);

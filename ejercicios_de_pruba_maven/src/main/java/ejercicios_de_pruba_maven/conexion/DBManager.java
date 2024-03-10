@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import ejercicios_de_pruba_maven.entidad.Alumno;
 
+import ejercicios_de_pruba_maven.entidad.Alumno;
 
 public class DBManager {
 	private static final String DATABASE_NAME = "coderhouse";
@@ -22,8 +22,7 @@ public class DBManager {
 			try {
 				connection = DriverManager.getConnection(URL, USER, PASSWORD);
 			} catch (SQLException e) {
-				System.err.println("Error al establecer la conexión: " 
-									+ e.getMessage());
+				System.err.println("Error al establecer la conexión: " + e.getMessage());
 			} finally {
 				if (connection != null)
 					System.out.println("Conexion exitosa a la Base de Datos " + DATABASE_NAME);
@@ -58,8 +57,7 @@ public class DBManager {
 				String apellido = resultSet.getString("apellido");
 				String legajo = resultSet.getString("legajo");
 
-				System.out.println("Alumno con DNI Nro " + dni + " es " 
-						+ nombre + " " + apellido
+				System.out.println("Alumno con DNI Nro " + dni + " es " + nombre + " " + apellido
 						+ ", y su Legajo es el Nro: " + legajo);
 			}
 
@@ -74,8 +72,7 @@ public class DBManager {
 					statement.close();
 				}
 			} catch (SQLException e) {
-				System.err.println("Error al cerrar el statement o el resultSet: " 
-									+ e.getMessage());
+				System.err.println("Error al cerrar el statement o el resultSet: " + e.getMessage());
 			}
 		}
 
@@ -84,21 +81,24 @@ public class DBManager {
 	public void mostrarAlumnoPorDNI(Integer dni) {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		String query = "SELECT nombre, apellido, legajo FROM alumnos WHERE id = ?";
+		String query = "SELECT nombre, apellido, legajo FROM alumnos WHERE dni = ?";
 
 		try {
 
 			statement = connection.prepareStatement(query);
-			resultSet = statement.executeQuery(query);
+			statement.setInt(1, dni);
+			resultSet = statement.executeQuery();
 
-			String nombre = resultSet.getString("nombre");
-			String apellido = resultSet.getString("apellido");
-			String legajo = resultSet.getString("legajo");
+			if (resultSet.next()) {
+				String nombre = resultSet.getString("nombre");
+				String apellido = resultSet.getString("apellido");
+				String legajo = resultSet.getString("legajo");
 
-			System.out.println("Alumno con DNI Nro " + dni + " Es: " 
-					+ nombre + " " + apellido
-					+ ", y su Legajo es el Nro: " + legajo);
-
+				System.out.println("Alumno con DNI Nro " + dni + " Es: " + nombre + " " + apellido
+						+ ", y su Legajo es el Nro: " + legajo );
+			} else {
+				System.out.println("No se encontró ningún alumno con DNI: " + dni);
+			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		} finally {
@@ -110,8 +110,7 @@ public class DBManager {
 					statement.close();
 				}
 			} catch (SQLException e) {
-				System.err.println("Error al cerrar el statement o el resultSet: " 
-									+ e.getMessage());
+				System.err.println("Error al cerrar el statement o el resultSet: " + e.getMessage());
 			}
 		}
 	}
@@ -119,8 +118,7 @@ public class DBManager {
 	public void insertarAlumno(Alumno alumno) {
 
 		PreparedStatement statement = null;
-		String query = "INSERT INTO alumnos (dni, nombre, apellido, legajo) " 
-					+ "VALUES (?, ?, ?, ?)";
+		String query = "INSERT INTO alumnos (dni, nombre, apellido, legajo) VALUES (?, ?, ?, ?)";
 
 		try {
 			statement = connection.prepareStatement(query);
@@ -137,8 +135,8 @@ public class DBManager {
 						+ " " + alumno.getApellido());
 			}
 			System.out.println(
-					"El Alumno " + alumno.getNombre() + " " + alumno.getApellido() 
-					+ " insertado correctamente");
+					"El Alumno " + alumno.getNombre() + " " 
+			+ alumno.getApellido() + " fue insertado correctamente");
 
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -153,33 +151,28 @@ public class DBManager {
 		}
 	}
 
-	public void modificarAlumno(Alumno alumno) {
+	public void modificarAlumno(Integer dni, String nuevoNombre, String nuevoApellido) {
 
 		PreparedStatement statement = null;
 
 		try {
-			String query = "UPDATE alumnos SET nombre = ?, apellido = ? "
-							+ "WHERE legajo = ?";
+			String query = "UPDATE alumnos SET nombre = ?, apellido = ? WHERE dni = ?";
 			statement = connection.prepareStatement(query);
-			
-			statement.setString(1, alumno.getNombre());
-			statement.setString(2, alumno.getApellido());
-			statement.setInt(3, alumno.getLegajo());
+
+			statement.setString(1, nuevoNombre);
+			statement.setString(2, nuevoApellido);
+			statement.setInt(3, dni);
 
 			int rowsAffected = statement.executeUpdate();
 
 			if (rowsAffected == 0) {
-				throw new SQLException("No se pudo modificar el alumno: " 
-									+ alumno.getNombre() 
-									+ " " + alumno.getApellido());
-				}
-			System.out.println("El Alumno " + alumno.getNombre() 
-								+ " " + alumno.getApellido() 
-								+ " se ha modificado correctamente");
-			
+				throw new SQLException("No se pudo modificar el alumno con DNI " + dni);
+			}
+			System.out.println("El Alumno con DNI " + dni + " se ha modificado correctamente");
+
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
-			
+
 		} finally {
 			try {
 				if (statement != null) {
@@ -190,27 +183,27 @@ public class DBManager {
 			}
 		}
 	}
-	
+
 	public void eliminarAlumno(Integer dni) {
 
 		PreparedStatement statement = null;
 
 		try {
 			String query = "DELETE FROM alumnos WHERE dni = ?";
-			
+
 			statement = connection.prepareStatement(query);
 			statement.setDouble(1, dni);
 
 			int rowsAffected = statement.executeUpdate();
 			if (rowsAffected == 0) {
 				System.out.println("No se pudo eliminar el alumno con DNI: " + dni);
+			} else {
+				System.out.println("El Alumno con DNI: " + dni + " ha sido eliminado correctamente");
 			}
-			System.out.println("El Alumno con DNI: " + dni 
-								+ " ha sido eliminado correctamente");
 
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
-			
+
 		} finally {
 			try {
 				if (statement != null) {
@@ -221,22 +214,23 @@ public class DBManager {
 			}
 		}
 	}
+
 	
 	public void eliminarTabla(String nombreTabla) {
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("SHOW TABLES LIKE '" + nombreTabla + "'");
-            if (resultSet.next()) {
-                statement.executeUpdate("DROP TABLE " + nombreTabla);
-                System.out.println("La tabla " + nombreTabla + " ha sido eliminada correctamente.");
-            } else {
-                System.out.println("La tabla " + nombreTabla + " no existe.");
-            }
-        } catch (SQLException e) {
-            System.err.println("Error al eliminar la tabla: " + e.getMessage());
-        } finally {
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery("SHOW TABLES LIKE '" + nombreTabla + "'");
+			if (resultSet.next()) {
+				statement.executeUpdate("DROP TABLE " + nombreTabla);
+				System.out.println("La tabla " + nombreTabla + " ha sido eliminada correctamente.");
+			} else {
+				System.out.println("La tabla " + nombreTabla + " no existe.");
+			}
+		} catch (SQLException e) {
+			System.err.println("Error al eliminar la tabla: " + e.getMessage());
+		} finally {
 			try {
 				if (resultSet != null) {
 					resultSet.close();
@@ -245,9 +239,9 @@ public class DBManager {
 					statement.close();
 				}
 			} catch (SQLException e) {
-				System.err.println("Error al cerrar el statement o el resultSet: " 
-									+ e.getMessage());
+				System.err.println("Error al cerrar el statement o el resultSet: " + e.getMessage());
 			}
 		}
-    }
+	}
+
 }

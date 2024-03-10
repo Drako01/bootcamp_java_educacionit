@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name = "cursos")
 public class Curso {
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID_CURSO")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id_curso;
 	@Column(name = "TITULO")
@@ -19,6 +19,7 @@ public class Curso {
 	@Column(name = "DESCRIPCION")
 	private String descripcion;
 
+		
 	public Curso() {
 		super();
 	}
@@ -46,5 +47,4 @@ public class Curso {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 }
