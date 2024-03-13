@@ -1,17 +1,50 @@
-CREATE DATABASE IF NOT EXISTS pruebas;
-USE pruebas;
+CREATE DATABASE IF NOT EXISTS coderhouse;
+USE coderhouse;
+
+create table persona (
+	nombre varchar(20),
+    apellido varchar(20)
+);
+insert into persona values 
+	("Alejandro", "Di Stefano"),
+	("Alejandro", "Perez"),
+    ("Alejandro", "Di Stefano");
+    
+select * from persona;
+
+select * from persona where nombre LIKE "Alejandro";
+
+select * from persona where apellido LIKE "Di Stefano";
+
+alter table persona add column id integer auto_increment not null primary key;
+
+select * from persona where id = 1;
+
+alter table persona add column dni integer  null;
+
+update persona set dni = 20222222 where id= 1;
+update persona set dni = 20222333 where id= 2;
+update persona set dni = 20222444 where id= 3;
+
+drop TABLE persona;
+
+
+/*
+	Ejercicios de Practica
+*/
+
 CREATE TABLE usuarios (
-   idx INT PRIMARY KEY AUTO_INCREMENT,
-   usuario VARCHAR(20),
-   nombre VARCHAR(20),
-   sexo VARCHAR(1),
-   nivel TINYINT,
-   email VARCHAR(50),
-   telefono VARCHAR(20),
-   marca VARCHAR(20),
-   compania VARCHAR(20),
-   saldo FLOAT,
-   activo BOOLEAN
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	usuario VARCHAR(20),
+	nombre VARCHAR(20),
+	sexo VARCHAR(1),
+	nivel INT,
+	email VARCHAR(50),
+	telefono VARCHAR(20),
+	marca VARCHAR(20),
+	compania VARCHAR(20),
+	saldo FLOAT,
+	activo BOOLEAN
 );
 
 INSERT INTO usuarios 
@@ -83,7 +116,7 @@ SELECT usuario, nivel FROM usuarios WHERE nivel = 2;
 SELECT email FROM usuarios WHERE LOWER(email) LIKE '%@gmail.com';
 
 SELECT nombre, telefono, marca FROM usuarios WHERE marca IN('LG', 'SAMSUNG', 'MOTOROLA') ORDER By marca;
-DROP table marcas;
+/*DROP table marcas;*/
 CREATE TABLE marcas (id integer auto_increment not null primary key) SELECT marca FROM usuarios GROUP BY marca ORDER BY 1;
 SELECT * FROM marcas;
 ALTER TABLE usuarios ADD COLUMN id_marca INTEGER NOT NULL;
@@ -123,6 +156,7 @@ UPDATE usuarios SET id_compania = 4 WHERE compania = 'MOVISTAR';
 UPDATE usuarios SET id_compania = 5 WHERE compania = 'NEXTEL';
 UPDATE usuarios SET id_compania = 6 WHERE compania = 'TELCEL';
 UPDATE usuarios SET id_compania = 7 WHERE compania = 'UNEFON';
+
 
 ALTER TABLE usuarios ADD foreign key (id_compania) REFERENCES companias(id);
 ALTER TABLE usuarios DROP COLUMN compania;

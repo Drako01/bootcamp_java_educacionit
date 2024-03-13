@@ -1,0 +1,100 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: grey;
+	color: white;
+	font-family: "Roboto";
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+.d-flex {
+	display: flex;
+	width: 100%;
+}
+
+.column {
+	flex-direction: column;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.evenly {
+	justify-content: space-evenly;
+}
+
+.center {
+	align-items: center;
+	justify-content: center;
+}
+
+.footer {
+	padding: 2rem;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	display: flex;
+	position: fixed;
+	bottom: 0;
+	height: 4vh;
+	background-color: #4045b8;
+	color: fff;
+}
+
+.footer p {
+	font-size: 1.5rem;
+	text-transform: uppercase;
+}
+
+.logotipo {
+	width: 480px;
+	padding: 2rem;
+	filter: drop-shadow(0 .5rem 1rem #404040);
+}
+
+.navbar {
+	height: 4rem;
+	background-color: white;
+}
+
+.navbar li {
+	padding: 1rem;
+}
+
+.navbar li a {
+	color: #4045b8;
+	font-size: 1.5rem;
+}
+
+.navbar li a:hover {
+	color: #404040;
+	text-shadow: 0 .12rem .5rem #424242;
+}
+
+.bienvenido {
+	margin-top: 3rem;
+}
+
+.bienvenido h1 {
+	font-size: 2.5rem;
+	letter-spacing: .5rem;
+	text-transform: uppercase;
+	color: yellow;
+}
+
+.producto {
+	max-width: 400px;
+	padding: 2rem;
+}
