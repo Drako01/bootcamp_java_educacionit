@@ -14,13 +14,12 @@ public class ArticuloCientifico {
 	public ArticuloCientifico(String titulo, String autor) {
 		this.titulo = titulo;
 		this.autor = autor;
-		
-		
+
 	}
 
-	public ArticuloCientifico(String titulo, String autor, String nombre, 
-		String palabrasClaves, int anioPublicacion, String resume) {
-		this(titulo,autor);
+	public ArticuloCientifico(String titulo, String autor, String nombre, String palabrasClaves, int anioPublicacion,
+			String resume) {
+		this(titulo, autor);
 		this.autor = nombre;
 		this.palabrasClaves = palabrasClaves;
 		this.anioPublicacion = anioPublicacion;
@@ -58,6 +57,5 @@ public class ArticuloCientifico {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
+
 }

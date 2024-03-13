@@ -1,7 +1,7 @@
 package db.excepciones;
 
 public class DBConexionException extends Exception {
-	
+
 	private static final long serialVersionUID = 1L;
 
 	private Integer error;
@@ -33,7 +33,7 @@ public class DBConexionException extends Exception {
 	public Integer getErrorCode() {
 		return error;
 	}
-	
+
 	@Override
 	public String getMessage() {
 		switch (error) {
@@ -44,7 +44,7 @@ public class DBConexionException extends Exception {
 		case ERROR_3:
 			return "La Tabla solicitada No Existe. \nError: " + super.getMessage();
 		case ERROR_4:
-			return "No se pudo Desconectar de la Base de datos. \nError: " + super.getMessage();		
+			return "No se pudo Desconectar de la Base de datos. \nError: " + super.getMessage();
 		default:
 			return super.getMessage();
 		}

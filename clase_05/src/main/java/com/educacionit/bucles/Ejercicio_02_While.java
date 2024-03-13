@@ -32,4 +32,5 @@ public class Ejercicio_02_While {
 		scanner.close();
 	}
 
+	
 }
