@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Productos | Educación IT</title>
 <link rel="stylesheet" type="text/css" href="static/css/style.css">
-
 </head>
 <body>
 	<header>
@@ -20,6 +19,14 @@
 				</li>
 				<li><a href="contacto.html" rel="noopener noreferrer">Contacto</a>
 				</li>
+				<li>
+					<div class="d-flex row evenly">
+						<img src="static/img/cart.png" alt="Carrito" class="cart-ico" />
+						<div class="cart-li">
+							<p>0</p>
+						</div>
+					</div>
+				</li>
 			</ul>
 		</nav>
 	</header>
@@ -27,9 +34,15 @@
 		<section class="d-flex column center bienvenido">
 			<h1>Productos</h1>
 			<img src="static/img/educacionit.svg" alt="Educacion IT"
-				class="logotipo" /> 
-			<img src="static/img/producto.png"
-				alt="Producto IT" class="producto" />
+				class="logotipo" />
+			<article class="card d-flex column center">
+				<img src="static/img/producto.png" alt="Producto IT"
+					class="product-card" />
+					<h4>
+						Producto de Alta Calidad
+					</h4>
+				<button class="btn" type="submit" id="comprar-btn">Comprar</button>
+			</article>
 		</section>
 	</main>
 	<footer class="footer center">

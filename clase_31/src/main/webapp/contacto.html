@@ -20,6 +20,14 @@
 				</li>
 				<li><a href="contacto.html" rel="noopener noreferrer">Contacto</a>
 				</li>
+				<li>
+					<div class="d-flex row evenly">
+						<img src="static/img/cart.png" alt="Carrito" class="cart-ico" />
+						<div class="cart-li">
+							<p>0</p>
+						</div>
+					</div>
+				</li>
 			</ul>
 		</nav>
 	</header>
@@ -27,9 +35,14 @@
 		<section class="d-flex column center bienvenido">
 			<h1>Contacto</h1>
 			<img src="static/img/educacionit.svg" alt="Educacion IT"
-				class="logotipo" />
-			<img src="static/img/contacto.png"
-				alt="Producto IT" class="producto" />
+				class="logotipo" /> <img src="static/img/contacto.png"
+				alt="Producto IT" class="contacto" />
+			<form class="d-flex column center">
+				<label>Nombre</label> <input type="text" id="nombre"> </input> <label>Email</label>
+				<input type="text" id="email"> </input>
+				<button class="btn" type="submit" id="validar-btn">validar</button>
+			</form>
+			<div id="validado" class="bienvenido"></div>
 		</section>
 	</main>
 	<footer class="footer center">
