@@ -38,11 +38,28 @@
 				class="logotipo" />
 
 			<!-- Cards -->
-			<article class="card d-flex column center">
-				
+			<article class="d-flex column center bienvenido ajax-box">
+				<h2>Alta Alumno</h2>
+				Legajo: <input type="text" id="legajoAlta"><br> Nombre:
+				<input type="text" id="nombre"><br> Edad: <input
+					type="text" id="edad"><br>
+				<button onclick="guardarEdicion()" class="btn">Guardar</button>
+				<br>
+
+				<h2>Buscar Alumno</h2>
+				<input type="text" id="legajo" placeholder="Ingrese legajo">
+				<button onclick="buscarAlumno()" class="btn">Buscar</button>
+				<br> <br>
+				<div id="alumnoInfo"></div>
+				<br>
+
+				<h2>Alumnos</h2>
+				<table id="tablaAlumnos">
+					
+				</table>
 			</article>
 			<!-- Fin Cards -->
-			
+
 		</section>
 	</main>
 	<footer class="footer center">

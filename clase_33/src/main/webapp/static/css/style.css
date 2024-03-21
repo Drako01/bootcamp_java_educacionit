@@ -149,9 +149,15 @@ form label {
 	padding: .5rem 0;
 }
 
+.bienvenido input,
 form button,
 form input {
 	height: 2rem;
-	width: calc(80% - 30rem);
+	width: calc(80% - 8rem);
+	max-width: 30rem;
 	padding: .1rem 1rem;
+}
+
+.ajax-box{
+	margin-bottom: 10rem;
 }
