@@ -1,0 +1,27 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>GuardarAlumnoServlet</servlet-name>
+  	<display-name>GuardarAlumnoServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.educacionit.servlet.GuardarAlumnoServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>BuscarAlumnoServlet</servlet-name>
+  	<display-name>BuscarAlumnoServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.educacionit.servlet.BuscarAlumnoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>GuardarAlumnoServlet</servlet-name>
+  	<url-pattern>/GuardarAlumnoServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>BuscarAlumnoServlet</servlet-name>
+  	<url-pattern>/BuscarAlumnoServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
