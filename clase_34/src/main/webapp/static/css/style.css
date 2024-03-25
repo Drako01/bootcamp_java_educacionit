@@ -14,8 +14,7 @@ li {
 }
 
 a {
-	text-decoration: none;
-	color: white;
+	text-decoration: none;	
 }
 
 .d-flex {
@@ -73,8 +72,7 @@ a {
 	padding: 1rem;
 }
 
-.navbar li a,
-.navbar li p {
+.navbar li a, .navbar li p {
 	color: #4045b8;
 	font-size: 1.5rem;
 }
@@ -99,10 +97,12 @@ a {
 	max-width: 400px;
 	padding: 2rem;
 }
+
 .contacto {
 	max-width: 150px;
 	padding: 2rem;
 }
+
 .card {
 	max-width: 280px;
 	padding: 2rem;
@@ -142,22 +142,32 @@ a {
 	color: #4045b8;
 	border-radius: 50%;
 	border: 1px solid #000;
-	margin-left: 1rem;	
+	margin-left: 1rem;
 }
 
 form label {
 	padding: .5rem 0;
 }
 
-.bienvenido input,
-form button,
-form input {
+.bienvenido button, .bienvenido input, form button, form input {
 	height: 2rem;
 	width: calc(80% - 8rem);
 	max-width: 30rem;
 	padding: .1rem 1rem;
 }
 
-.ajax-box{
+.bienvenido button, form button {
+	max-width: 32rem;
+	width: calc(80% - 6rem);
+}
+
+.bienvenido button:hover, form button:hover {
+	background-color: transparent;
+	color: white;
+	border: 1px solid white;
+}
+
+.ajax-box {
 	margin-bottom: 10rem;
 }
+
