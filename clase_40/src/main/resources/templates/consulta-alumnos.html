@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="ISO-8859-1">
+<title>Consulta Alumnos</title>
+</head>
+<body>
+	<h1>Agregar Alumno</h1>
+	
+	<form action="/alumnos/alta-alumno" method="post">
+
+		<!-- Input de Legajo -->	
+		<label for="legajo">Legajo:</label>
+		<input type="number" id="legajo" name="legajo"><br>
+		
+		<!-- Input de Nombre -->	
+		<label for="nombre">Nombre:</label>
+		<input type="text" id="nombre" name="nombre"><br>
+		
+		<button type="submit">Guardar Alumno</button>	
+	</form>
+	
+	<h1>Listado De Alumnos</h1>
+	<ul>
+		<th:block th:each="alumno : ${alumnos}">
+			<li>Legajo:
+				<span th:text="${alumno.legajo}"></span>
+				, Nombre: <span th:text="${alumno.nombre}"></span>
+			</li>
+		</th:block>
+	</ul>
+	
+
+</body>
+</html>

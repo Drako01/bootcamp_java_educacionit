@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="expires" content="0">
+<meta http-equiv="Cache-Control">
+<meta http-equiv="Pragma" content="no-cache">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Promesas | Educación IT</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body id="ajax">
+	<header>
+		<nav class="navbar">
+			<ul class="d-flex row evenly">
+				<li><a href="index.html" rel="noopener noreferrer">Home</a></li>
+				<li><a href="productos.html" rel="noopener noreferrer">Productos</a>
+				</li>
+				<li><a href="contacto.html" rel="noopener noreferrer">Contacto</a>
+				</li>
+				<li><a href="ajax.html" rel="noopener noreferrer">Ajax</a></li>
+				<li><a href="promesas.html" rel="noopener noreferrer">Promesas</a></li>
+				<li>
+					<div class="d-flex row evenly">
+						<img src="static/img/cart.png" alt="Carrito" class="cart-ico" />
+						<div class="cart-li">
+							<p>0</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section class="d-flex column center bienvenido">
+			<h1>S.P.A. Alumnos</h1>
+			<img src="static/img/educacionit.svg" alt="Educacion IT"
+				class="logotipo" />
+			<article class="d-flex column center bienvenido ajax-box">
+				
+					<h2>Consulta de Alumno</h2>
+					<input type="text" id="inputLegajo" placeholder="Legajo">
+					<button onclick="consultarAlumno()" class="btn">Consultar</button>
+					<p id="resultadoConsulta"></p>
+					<br>
+					<h2>Alta de Alumno</h2>
+					<input type="text" id="inputLegajo" placeholder="Legajo"> <input
+						type="text" id="inputNombre" placeholder="Nombre"> <input
+						type="number" id="inputEdad" placeholder="Edad">
+					<button onclick="altaAlumno()" class="btn">Dar de Alta</button>
+					<p id="resultadoAlta"></p>
+					<br>
+					<h2>Baja de Alumno</h2>
+					<input type="text" id="inputLegajoBaja" placeholder="Legajo">
+					<button onclick="bajaAlumno()" class="btn">Dar de Baja</button>
+					<p id="resultadoBaja"></p>
+					<br>
+			</article>
+		</section>
+	</main>
+	<footer class="footer center">
+		<p>Educación IT | &copy;</p>
+		<p id="hora"></p>
+	</footer>
+
+	<script type="text/javascript" src="static/js/promesas.js"></script>
+	<script type="text/javascript" src="static/js/reloj.js"></script>
+</body>
+</html>
