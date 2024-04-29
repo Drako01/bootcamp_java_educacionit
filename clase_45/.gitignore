@@ -28,16 +28,9 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
-.metadata
-languageServers-log
 
 ### VS Code ###
 .vscode/
-
-### Servers
-Servers
-/Servers
-*/Servers
 
 */logs/
 /logs/
@@ -48,4 +41,5 @@ Dockerfile
 */Dockerfile*
 fly.toml
 /fly.toml
-*/*.toml*
+
+*/fly.toml*
