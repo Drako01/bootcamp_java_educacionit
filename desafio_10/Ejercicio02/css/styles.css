@@ -1,0 +1,220 @@
+/* Variables */
+:root {
+    /* Colores */
+    --first: #0a2ff1;
+    --second: #eff2ff;
+    --thirth: #8a9af1;
+    --fourth: #eff2ff;
+    --fifth: #3ffff3;
+    --white: #ffffff;
+
+    /* Tamaños */
+    --big: 5rem;
+    --large: 50pt;
+    --medium: 22.55pt;
+    --small: 1em;
+    --ssmall: .75em;
+    --little: .25em;
+    --title: 1.5rem;
+
+    /* Pesos */
+    --weight-bold: 700;
+    --weight-bregular: 400;
+    --weight-light: 200;
+
+
+    /* Fonts */
+    --font: 'Poppins', sans-serif;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Reinicios de Estilos */
+
+body {
+    position: relative;
+    z-index: 0;
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: var(--font);
+}
+
+
+/* Margenes */
+body,
+h1,
+h2,
+h3,
+h4,
+header p,
+.submenu,
+.subitems,
+.menu {
+    margin: 0;
+}
+
+/* Rellenos */
+.submenu,
+.subitems,
+.menu {
+    padding: 0;
+}
+
+/* Bordes */
+iframe {
+    border: 0;
+}
+
+/* Estilos */
+:is(header, nav, footer) a {
+    text-decoration: none;
+}
+
+.submenu,
+.subitems,
+.menu {
+    list-style: none;
+}
+
+main{
+    margin-top: var(--big);
+}
+
+h1 {
+    font-weight: var(--weight-bold);
+    color: var(--first);
+    font-size: var(--large);
+    margin-bottom: 3rem;
+}
+
+h3.subtitulo {
+    font-weight: var(--weight-regular);
+    color: var(--first);
+    font-size: var(--medium);
+    background-color: var(--fourth);
+    margin-bottom: 2rem;
+}
+
+h3.subtitulo span {
+    font-weight: var(--weight-bold);
+}
+
+h4.posiciones {    
+    font-weight: var(--weight-regular);
+    color: var(--second);
+    font-size: var(--medium);
+    background-color: var(--thirth);
+    padding: var(--little);
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 1400px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+section {
+    margin-top: var(--little);
+}
+
+.images_section {
+    padding: var(--little);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    gap: var(--little);
+}
+
+.images_section div {
+    width: calc(100% / 3);
+}
+
+.images_section div img {
+    width: 100%;
+    object-fit: contain;
+}
+.line_space{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.line_final{
+    height: var(--ssmall);
+    float: right;
+    width: 10%;
+    background-color: var(--thirth);
+}
+.line {
+    height: var(--little);
+    width: 100%;
+    background-color: var(--fifth);
+}
+
+.center {
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    height: 4vh;
+    background-color: var(--first);
+
+}
+
+.footer p {
+    font-size: var(--small);
+    text-transform: uppercase;
+    color: var(--white);
+}
+.header {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    height: 4vh;
+    background-color: var(--first);
+    border-radius: 0 0 1rem 1rem ;
+}
+
+.header p {
+    font-size: var(--small);
+    color: var(--white);
+    font-family: var(--font);
+    font-weight: var(--weight-light);
+    font-size: var(--title);
+}
+.col-10 {
+    margin-left: 70px;
+}
+
+@media screen and (max-width: 576px) {}
+
+/* Designer: Alejandro Di Stefano */

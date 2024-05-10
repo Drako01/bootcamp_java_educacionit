@@ -1,0 +1,203 @@
+/* Variables */
+:root {
+    /* Colores */
+    --first: #04146c;
+    --second: #0a2ff1;
+    --white: #ffffff;
+
+    /* Tamaños */
+    --large: 28.11pt;
+    --medium: 16.17pt;
+    --small: 14.98pt;
+
+    /* Pesos */
+    --weight-black: 900;
+    --weight-bold: 700;
+    --weight-regular: 400;
+
+
+    /* Fonts */
+    --font-black: 'Mulish black', sans-serif;
+    --font-bold: 'Mulish bold', sans-serif;
+    --font-regular: 'Mulish regular', sans-serif;
+}
+
+.mulish-font {
+    font-family: "Mulish", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Reinicios de Estilos */
+
+body {
+    position: relative;
+    z-index: 0;
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+/* Margenes */
+body,
+h1,
+h2,
+h3,
+h4,
+header p,
+.submenu,
+.subitems,
+.menu {
+    margin: 0;
+}
+
+/* Rellenos */
+.submenu,
+.subitems,
+.menu {
+    padding: 0;
+}
+
+/* Bordes */
+iframe {
+    border: 0;
+}
+
+/* Estilos */
+:is(header, nav, footer) a {
+    text-decoration: none;
+}
+
+.submenu,
+.subitems,
+.menu {
+    list-style: none;
+}
+
+
+
+h1 {
+    font-family: var(--font-black);
+    font-weight: var(--weight-black);
+    color: var(--first);
+    font-size: var(--large);
+}
+
+h3 {
+    font-family: var(--font-bold);
+    font-weight: var(--weight-bold);
+    color: var(--second);
+    font-size: var(--medium);
+}
+
+p {
+    font-family: var(--font-regular);
+    font-weight: var(--weight-regular);
+    color: var(--first);
+    font-size: var(--small);
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 1400px;
+    margin: var(--large);
+    margin-right: auto;
+    margin-left: auto;
+}
+section {
+    margin-top:var(--small);
+}
+.filas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.columnas {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--small);
+}
+
+.row{
+    justify-content: flex-start;
+}
+.col-2{
+    max-width: 70px;
+}
+.col-2, .col-8 {
+    padding: 0;
+}
+.col-2 img,
+section article div img {
+    width: 55px;
+    margin-right: 15px;
+}
+.col-2 img {
+    margin-right: 0;
+}
+.contenedor section article div p {
+    width: 40%;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 70px;
+}
+.parrafo_item {
+    width: 40%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    margin-left: 70px;
+}
+.center {
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    height: 4vh;
+    background-color: var(--first);
+
+}
+
+.footer p {
+    font-size: var(--small);
+    text-transform: uppercase;
+    color: var(--white);
+}
+
+.col-10{
+    margin-left: 70px;
+}
+@media screen and (max-width: 576px) {
+    .contenedor section article div p {
+        width: 100%;
+        margin-left: 0;
+        margin-top: .5rem;
+    }
+    .parrafo_item {
+        margin: 0;
+        margin-top: .5rem;
+    }
+    .footer p {
+        font-size: calc(var(--small) - 1vw);
+        text-align: center; 
+        padding: .25rem;       
+    }
+}
+
+/* Designer: Alejandro Di Stefano */

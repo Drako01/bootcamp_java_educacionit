@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Educacion IT | Desafío 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <header class="header center">
+        <p>Desarrollo Web con HTML</p>
+        <img src="./img/educacionit.svg" alt="Educacion IT">
+    </header>
+    <main class="contenedor">
+        <div class="center">
+            <h1>Cálculo de un presupuesto</h1>
+        </div>
+        <div class="form-group">
+            <label for="income">Ingresos Totales:</label>
+            <input type="number" id="income" placeholder="Ingrese sus ingresos">
+        </div>
+        <div id="categories">
+            <div class="category">
+                <input type="text" value="Gastos" class="category-name">
+                <input type="number" value="50" class="category-percentage"> %
+            </div>
+            <div class="category">
+                <input type="text" value="Ahorro" class="category-name">
+                <input type="number" value="30" class="category-percentage"> %
+            </div>
+            <div class="category">
+                <input type="text" value="Inversión" class="category-name">
+                <input type="number" value="20" class="category-percentage"> %
+            </div>
+        </div>
+        <div class="botonera">
+            <button id="add-category" class="agregar">Agregar Categoría</button>
+            <button id="calculate" class="calcular">Calcular Presupuesto</button>
+        </div>
+        <div id="result" class="result"></div>
+    </main>
+    <footer class="footer center">
+        <p>Educación IT | &copy; Alejandro Daniel Di Stefano</p>
+    </footer>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
