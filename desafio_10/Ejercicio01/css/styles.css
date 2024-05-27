@@ -108,7 +108,7 @@ p {
     max-width: 1400px;
     margin: var(--large);
     margin-right: auto;
-    margin-left: auto;
+    margin-left: calc(100% - 95vw);
 }
 section {
     margin-top:var(--small);

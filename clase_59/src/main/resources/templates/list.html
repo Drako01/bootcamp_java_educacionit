@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Registro de Alumnos</title>
+<!--
+    Bootstrap CSS: Este enlace carga el archivo CSS de Bootstrap, proporcionando los estilos y componentes de Bootstrap.
+	jQuery: Biblioteca JavaScript necesaria para algunas funcionalidades de Bootstrap.
+	Bootstrap JS: Incluye los scripts de Bootstrap que dependen de jQuery y otros scripts necesarios para el funcionamiento de componentes dinámicos.
+     -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"
+	crossorigin="anonymous"></script>
+
+<style>
+	.avatar {    
+	    height: 320px;     
+	    overflow: hidden; 
+	}
+
+	.avatar img {
+	    width: 100%;
+	    height: 100%;
+	    object-fit: cover;
+	    object-position: center; 
+	}
+
+</style>
+</head>
+
+
+<body>
+
+	<!--
+.navbar: Clase base para la barra de navegación.
+.navbar-expand-lg: Hace que la barra de navegación sea responsive, expandiéndose en pantallas grandes.
+.navbar-light y .bg-light: Estilos para la barra de navegación, proporcionando un fondo claro y texto oscuro.
+.navbar-brand: Clase para la marca de la barra de navegación.
+.collapse.navbar-collapse: Hace que el contenido de la barra de navegación colapse en pantallas pequeñas.
+.navbar-nav: Clase para los elementos de navegación dentro de la barra.
+.nav-item y .nav-link: Clases para los elementos de la lista de navegación y sus enlaces.
+data-bs-toggle y data-bs-target: Atributos de Bootstrap para manejar el comportamiento del modal.
+	 -->
+
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		<a class="navbar-brand" href="#">Registro de Alumnos</a>
+
+		<div class="collapse navbar-collapse">
+
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link" href="#"
+					data-bs-toggle="modal" data-bs-target="#addModal">Agregar</a></li>
+				<li class="nav-item"><a class="nav-link" href="#"
+					id="refreshButton">Refrescar</a></li>
+			</ul>
+		</div>
+
+	</nav>
+
+
+	<!-- Container -->
+	<!-- 
+.container: Clase de Bootstrap que proporciona un contenedor centralizado con padding.
+.mt-4: Clase de utilidad que añade un margen superior de 4 unidades.
+.table: Clase para aplicar estilos de Bootstrap a las tablas.
+     -->
+	<div class="container mt-4">
+		<h2>Lista de Alumnos</h2>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nombre y Apellido</th>
+					<th>Legajo</th>
+					<th>País</th>
+					<th>Sexo</th>
+					<th>Edad</th>
+					<th>Materias</th>
+					<th>Avatar</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody id="alumnosTableBody">
+				<!-- El contenido de la tabla se generará dinámicamente -->
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Add Modal -->
+	<!-- Modal -->
+	<!-- 
+.modal y .fade: Clases para crear un modal con efecto de desvanecimiento.
+.modal-dialog y .modal-content: Clases para estructurar el contenido del modal.
+.modal-header, .modal-title, .btn-close: Clases para la cabecera del modal, el título y el botón de cerrar.
+.modal-body: Clase para el cuerpo del modal.
+.form-group y .form-control: Clases para agrupar y estilizar los elementos del formulario.
+.btn y .btn-primary: Clases para los botones, aplicando el estilo primario de Bootstrap.
+     -->
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+		aria-labelledby="addModalLabel" aria-hidden="true">
+
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h5 class="modal-title" id="addModalLabel">Agregar Alumno</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+
+				<!-- Modal Body -->
+				<div class="modal-body">
+					<form id="addAlumnoForm">
+						<div class="form-group">
+							<label for="addNombre">Nombre</label> <input type="text"
+								id="addNombre" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label for="addApellido">Apellido</label> <input type="text"
+								id="addApellido" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label for="addLegajo">Legajo</label> <input type="number"
+								id="addLegajo" class="form-control" min="1000" max="3000"
+								required />
+						</div>
+						<div class="form-group">
+							<label for="addPais">País</label> 
+							<select id="addPais"
+								class="form-control" required>
+								<option th:each="pais : ${pais}" th:value="${pais}"
+									th:text="${pais}"></option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="addSexo">Sexo</label> 
+							<select id="addSexo"
+								class="form-control" required>
+								<option th:each="sexo : ${sexo}" th:value="${sexo}"
+									th:text="${sexo}"></option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="addEdad">Edad</label> <input type="number"
+								id="addEdad" class="form-control" min="18" required />
+						</div>
+						<div class="form-group">
+							<label for="addMaterias">Materias</label> 
+							<select
+								id="addMaterias" class="form-control" multiple required>
+								<option th:each="materia : ${materia}" th:value="${materia}"
+									th:text="${materia}"></option>
+
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="addAvatar">Avatar</label>
+
+							<!--
+.carousel y .slide: Clases para crear un carousel con efecto de deslizamiento.
+.carousel-inner: Contenedor para los elementos del carousel.
+.carousel-item y .active: Clases para los elementos del carousel, donde .active indica el elemento activo.
+.carousel-control-prev, .carousel-control-next: Clases para los controles de navegación del carousel.
+.carousel-control-prev-icon, .carousel-control-next-icon: Clases para los íconos de los controles.
+                             -->
+							<!-- Carousel -->
+							<div id="carouselAddAvatar" class="carousel slide"
+								data-bs-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active avatar">
+										<img src="/images/avatar1.jpg" class="d-block w-100"
+											alt="Avatar 1">
+									</div>
+									<div class="carousel-item avatar">
+										<img src="/images/avatar2.jpg" class="d-block w-100"
+											alt="Avatar 2">
+									</div>
+									<div class="carousel-item avatar">
+										<img src="/images/avatar3.jpg" class="d-block w-100"
+											alt="Avatar 3">
+									</div>
+								</div>
+								<button class="carousel-control-prev" type="button"
+									data-bs-target="#carouselAddAvatar" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button"
+									data-bs-target="#carouselAddAvatar" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</div>
+							<input type="hidden" id="addAvatar" name="avatar"
+								value="/images/avatar1.jpg">
+						</div>
+
+
+						<button type="submit" class="btn btn-primary">Agregar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modify Modal -->
+	<div class="modal fade" id="modifyModal" tabindex="-1" role="dialog"
+		aria-labelledby="modifyModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modifyModalLabel">Modificar Alumno</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form id="modifyAlumnoForm">
+						<div class="form-group">
+							<label for="modifyNombre">Nombre</label> <input type="text"
+								id="modifyNombre" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label for="modifyApellido">Apellido</label> <input type="text"
+								id="modifyApellido" class="form-control" required />
+						</div>
+						<div class="form-group">
+							<label for="modifyLegajo">Legajo</label> <input type="number"
+								id="modifyLegajo" class="form-control" readonly />
+						</div>
+						<div class="form-group">
+							<label for="modifyPais">País</label> 
+							<select id="addPais"
+								class="form-control" required>
+								<option th:each="pais : ${pais}" th:value="${pais}"
+									th:text="${pais}"></option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="modifySexo">Sexo</label> 
+							<select id="modifySexo"
+								class="form-control" required>
+								<option th:each="sexo : ${sexo}" th:value="${sexo}"
+									th:text="${sexo}"></option>
+
+
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="modifyEdad">Edad</label> <input type="number"
+								id="modifyEdad" class="form-control" min="18" required />
+						</div>
+						<div class="form-group">
+							<label for="modifyMaterias">Materias</label> 
+							<select
+								id="modifyMaterias" class="form-control" multiple required>
+								<option th:each="materia : ${materia}" th:value="${materia}"
+									th:text="${materia}"></option>
+
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="modifyAvatar">Avatar</label>
+							<div id="carouselModifyAvatar" class="carousel slide"
+								data-bs-ride="carousel">
+								<div class="carousel-inner">
+									<div class="carousel-item active avatar">
+										<img src="/images/avatar1.jpg" class="d-block w-100"
+											alt="Avatar 1">
+									</div>
+									<div class="carousel-item avatar">
+										<img src="/images/avatar2.jpg" class="d-block w-100"
+											alt="Avatar 2">
+									</div>
+									<div class="carousel-item avatar">
+										<img src="/images/avatar3.jpg" class="d-block w-100"
+											alt="Avatar 3">
+									</div>
+								</div>
+								<button class="carousel-control-prev" type="button"
+									data-bs-target="#carouselModifyAvatar" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button"
+									data-bs-target="#carouselModifyAvatar" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</div>
+							<input type="hidden" id="modifyAvatar" name="avatar"
+								value="/images/avatar1.jpg">
+						</div>
+						<button type="submit" class="btn btn-primary">Modificar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Delete Modal -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+		aria-labelledby="deleteModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="deleteModalLabel">Eliminar Alumno</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<p>¿Está seguro de que desea eliminar este alumno?</p>
+					<p id="deleteNombreApellido"></p>
+					<form id="deleteAlumnoForm">
+						<input type="hidden" id="deleteLegajo" />
+						<button type="submit" class="btn btn-danger">Eliminar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+        let alumnos = [];
+
+        function renderAlumnos() {
+            const alumnosTableBody = document.getElementById('alumnosTableBody');
+            alumnosTableBody.innerHTML = '';
+            alumnos.forEach(alumno => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${alumno.nombre} ${alumno.apellido}</td>
+                    <td>${alumno.legajo}</td>
+                    <td>${alumno.pais}</td>
+                    <td>${alumno.sexo}</td>
+                    <td>${alumno.edad}</td>
+                    <td>${alumno.materias.join(', ')}</td>
+                    <td><img src="${alumno.avatar}" alt="Avatar" style="width: 50px; height: 50px;"/></td>
+                    <td>
+                        <button class="btn btn-primary" onclick="showModifyModal(${alumno.legajo})">Modificar</button>
+                        <button class="btn btn-danger" onclick="showDeleteModal(${alumno.legajo})">Eliminar</button>
+                    </td>
+                `;
+                alumnosTableBody.appendChild(row);
+            });
+        }
+
+        function showModifyModal(legajo) {
+            const alumno = alumnos.find(a => a.legajo === legajo);
+            if (!alumno) {
+                console.error('Alumno no encontrado:', legajo);
+                return;
+            }
+            document.getElementById('modifyNombre').value = alumno.nombre;
+            document.getElementById('modifyApellido').value = alumno.apellido;
+            document.getElementById('modifyLegajo').value = alumno.legajo;
+            document.getElementById('modifyPais').value = alumno.pais;
+            document.getElementById('modifySexo').value = alumno.sexo;
+            document.getElementById('modifyEdad').value = alumno.edad;
+            const materiasSelect = document.getElementById('modifyMaterias');
+            Array.from(materiasSelect.options).forEach(option => {
+                option.selected = alumno.materias.includes(option.value);
+            });
+            document.getElementById('modifyAvatar').value = alumno.avatar;
+
+            const carouselItems = document.querySelectorAll('#carouselModifyAvatar .carousel-item');
+            carouselItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.querySelector('img').src.includes(alumno.avatar)) {
+                    item.classList.add('active');
+                }
+            });
+
+            new bootstrap.Modal(document.getElementById('modifyModal')).show();
+        }
+
+        function showDeleteModal(legajo) {
+            const alumno = alumnos.find(a => a.legajo === legajo);
+            if (!alumno) {
+                console.error('Alumno no encontrado:', legajo);
+                return;
+            }
+            document.getElementById('deleteNombreApellido').innerText = `${alumno.nombre} ${alumno.apellido}`;
+            document.getElementById('deleteLegajo').value = alumno.legajo;
+            new bootstrap.Modal(document.getElementById('deleteModal')).show();
+        }
+
+        document.getElementById('addAlumnoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const alumno = {
+                nombre: document.getElementById('addNombre').value,
+                apellido: document.getElementById('addApellido').value,
+                legajo: parseInt(document.getElementById('addLegajo').value),
+                pais: document.getElementById('addPais').value,
+                sexo: document.getElementById('addSexo').value,
+                edad: parseInt(document.getElementById('addEdad').value),
+                materias: Array.from(document.getElementById('addMaterias').selectedOptions).map(option => option.value),
+                avatar: document.querySelector('#carouselAddAvatar .carousel-item.active img').src
+            };
+            $.ajax({
+                url: '/alumno/add',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(alumno),
+                success: function(response) {
+                    alumnos.push(alumno);
+                    renderAlumnos();
+                    $('#addModal').modal('hide');
+                }
+            });
+        });
+
+        document.getElementById('modifyAlumnoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const alumno = {
+                nombre: document.getElementById('modifyNombre').value,
+                apellido: document.getElementById('modifyApellido').value,
+                legajo: parseInt(document.getElementById('modifyLegajo').value),
+                pais: document.getElementById('modifyPais').value,
+                sexo: document.getElementById('modifySexo').value,
+                edad: parseInt(document.getElementById('modifyEdad').value),
+                materias: Array.from(document.getElementById('modifyMaterias').selectedOptions).map(option => option.value),
+                avatar: document.querySelector('#carouselModifyAvatar .carousel-item.active img').src
+            };
+            $.ajax({
+                url: '/alumno/modify',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(alumno),
+                success: function(response) {
+                    const index = alumnos.findIndex(a => a.legajo === alumno.legajo);
+                    if (index >= 0) {
+                        alumnos[index] = alumno;
+                        renderAlumnos();
+                        $('#modifyModal').modal('hide');
+                    }
+                }
+            });
+        });
+
+        document.getElementById('deleteAlumnoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const legajo = parseInt(document.getElementById('deleteLegajo').value);
+            $.ajax({
+                url: '/alumno/delete',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(legajo),
+                success: function(response) {
+                    alumnos = alumnos.filter(a => a.legajo !== legajo);
+                    renderAlumnos();
+                    $('#deleteModal').modal('hide');
+                }
+            });
+        });
+
+        function refreshAlumnos() {
+            $.get('/alumno/list', function(data) {
+                alumnos = data;
+                renderAlumnos();
+            });
+        }
+
+        document.getElementById('refreshButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            refreshAlumnos();
+        });
+
+        $(document).ready(function() {
+            refreshAlumnos(); // Inicialmente renderizamos con la lista actual del servidor
+        });
+    </script>
+</body>
+</html>

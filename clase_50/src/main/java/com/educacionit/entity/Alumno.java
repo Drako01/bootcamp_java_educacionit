@@ -8,16 +8,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "alumnos")
+@Table(name="alumnos")
 public class Alumno {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(name = "nombre", nullable = false, length = 255)
+	
+	@Column(name="nombre", nullable = false, length = 255)
 	private String nombre;
-
+	
 	@Column(name = "legajo", nullable = false)
 	private Integer legajo;
 
@@ -59,5 +59,7 @@ public class Alumno {
 	public String toString() {
 		return "Alumno [id=" + id + ", nombre=" + nombre + ", legajo=" + legajo + "]";
 	}
-
+	
+	
+	
 }

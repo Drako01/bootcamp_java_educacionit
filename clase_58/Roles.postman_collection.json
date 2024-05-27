@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "e288cd84-9593-4dd0-a9e1-0c69ff33dde8",
+		"name": "Roles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1690410"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user\",\r\n    \"password\": \"123\",\r\n    \"email\": \"user\",\r\n    \"phone\": \"1155555555\",\r\n    \"name\": \"user\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authenticate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user_editor\",\r\n    \"password\": \"123\",\r\n    \"email\": \"email editor\",\r\n    \"phone\": \"1144555\",\r\n    \"name\": \"nombre\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Role - Admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiUk9MRV9BRE1JTiIsImlhdCI6MTcxOTI2MDQzNCwiZXhwIjoxNzE5Mjc4NDM0fQ.Mp9T9uZu0Athslz3TWOzvAsYK_04QDhcb-7weP5V4Cc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user_editor\",\r\n    \"password\": \"123\",\r\n    \"email\": \"email editor\",\r\n    \"phone\": \"1144555\",\r\n    \"name\": \"nombre\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/security/admin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"security",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

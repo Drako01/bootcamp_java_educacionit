@@ -12,22 +12,25 @@ import com.educacionit.service.AlumnoService;
 
 @Service
 public class AlumnoServiceImpl implements AlumnoService {
+
 	
 	@Autowired
 	private AlumnoRepository alumnoRepository;
-
+	
 	@Override
-	public List<Alumno> getAllAlumnos() {		
+	public List<Alumno> getAllAlumnos() {
 		return alumnoRepository.findAll();
 	}
 
 	@Override
-	public Alumno getById(Long id) throws Exception{
+	public Alumno getById(Long id) throws Exception {
+		
 		Optional<Alumno> unAlumno = alumnoRepository.findById(id);
-		if(unAlumno.isPresent()) {
+		
+		if (unAlumno.isPresent()) {
 			return unAlumno.get();
 		} else {
-			throw new Exception("El Alumno con ID: " + id + " no Existe en la BD");
+			throw new Exception("El alumnno con el id" + id + " no fue encontrado en la base de datos");
 		}
 	}
 
@@ -37,9 +40,8 @@ public class AlumnoServiceImpl implements AlumnoService {
 	}
 
 	@Override
-	public void deleteAlumno(Long id) {
-		alumnoRepository.deleteById(id);		
+	public void deteleAlumno(Long id) {
+		alumnoRepository.deleteById(id);
 	}
 
-	
 }

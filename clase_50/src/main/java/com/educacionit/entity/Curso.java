@@ -8,9 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "cursos")
+@Table(name  = "cursos")
 public class Curso {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -18,11 +18,11 @@ public class Curso {
 	@Column(name = "descripcion", nullable = false, length = 255)
 	private String descripcion;
 
-	private Curso() {
+	public Curso() {
 		super();
 	}
 
-	private Curso(String descripcion) {
+	public Curso(String descripcion) {
 		super();
 		this.descripcion = descripcion;
 	}
@@ -47,5 +47,7 @@ public class Curso {
 	public String toString() {
 		return "Curso [id=" + id + ", descripcion=" + descripcion + "]";
 	}
+	
+	
 
 }
