@@ -18,42 +18,52 @@ class AlumnoServiceImplTest {
 
 	@Autowired
 	private AlumnoService alumnoService;
+	
 	@Autowired
 	private AlumnoRepository alumnoRepository;
+	
 	@Test
 	void testGetAllAlumnos() {
-		List<Alumno> todosLosAlumnos = alumnoService.getAllAlumnos();
-		assertNotNull(todosLosAlumnos);
+		
+		List<Alumno> todosLosalumnos = alumnoService.getAllAlumnos();
+		assertNotNull(todosLosalumnos);		
 	}
 
 	@Test
 	void testGetById() throws Exception {
-		Alumno unAlumno = new Alumno("Nombre", 1000);
+		// Crear un alumno		
+		Alumno unAlumno = new Alumno("Nombre Alumno en Test", 1000);
 		Alumno unAlumnoGuardado = alumnoRepository.save(unAlumno);
+		
+		// Buscar por Id - En capa de Servicio
 		Alumno elAlumnoBuscado = alumnoService.getById(unAlumnoGuardado.getId());
+		
 		assertNotNull(elAlumnoBuscado);
 		assertEquals(unAlumnoGuardado.getId(), elAlumnoBuscado.getId());
 		assertEquals(unAlumnoGuardado.getNombre(), elAlumnoBuscado.getNombre());
 		assertEquals(unAlumnoGuardado.getLegajo(), elAlumnoBuscado.getLegajo());
-		alumnoRepository.deleteById(unAlumnoGuardado.getId());		
+				
+		// Limpieza - Borrar el caso creado
+		alumnoRepository.deleteById(unAlumnoGuardado.getId());
+		
 	}
 
 	@Test
 	void testSaveAlumno() {
-		Alumno alumnoAGuardar = new Alumno("Nombre", 1000);
-		Alumno elAlumnoGuardado = alumnoRepository.save(alumnoAGuardar);
-		assertNotNull(elAlumnoGuardado);
-		assertNotNull(elAlumnoGuardado.getId());
-		alumnoRepository.deleteById(elAlumnoGuardado.getId());		
+		Alumno alumnoAGuardar = new Alumno("Nombre Alumno en Test", 1000);
+		
+		Alumno alumnoGuardado = alumnoService.saveAlumno(alumnoAGuardar);
+		
+		assertNotNull(alumnoGuardado);
+		assertNotNull(alumnoGuardado.getId());
+		
+		// Limpieza - Borrar el caso creado
+		alumnoRepository.deleteById(alumnoGuardado.getId());
+
 	}
 
 	@Test
-	void testDeleteAlumno() {
-		Alumno alumnoAGuardar = new Alumno("Nombre", 1000);
-		Alumno elAlumnoGuardado = alumnoRepository.save(alumnoAGuardar);
-		assertNotNull(elAlumnoGuardado);
-		alumnoRepository.deleteById(elAlumnoGuardado.getId());	
-		
+	void testDeteleAlumno() {
 	}
 
 }

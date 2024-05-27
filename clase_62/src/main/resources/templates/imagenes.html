@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Imágenes Guardadas</title>
+</head>
+<body>
+    <h1>Imágenes Guardadas</h1>
+    <div th:each="imagen, iterStat : ${imagenes}">
+        <div>
+            <h3>Imagen desde URL</h3>
+            <img th:src="${imagen.urlImagen}" alt="Imagen desde URL" />
+        </div>
+    </div>
+</body>
+</html>

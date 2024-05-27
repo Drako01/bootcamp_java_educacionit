@@ -11,21 +11,22 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "inscripciones")
 public class Inscripcion {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "id_alumno")
 	private Alumno alumno;
-
+	
 	@ManyToOne
-	@JoinColumn(name = "id_curso")
+	@JoinColumn(name="id_curso")
 	private Curso curso;
 
 	public Inscripcion() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	public Inscripcion(Alumno alumno, Curso curso) {
@@ -62,5 +63,7 @@ public class Inscripcion {
 	public String toString() {
 		return "Inscripcion [id=" + id + ", alumno=" + alumno + ", curso=" + curso + "]";
 	}
+	
+	
 
 }

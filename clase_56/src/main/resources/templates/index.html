@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listado de Personas</title>
+</head>
+<body>
+
+    <h2>Listado de Personas</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="persona, iterStat : ${personas}">
+                <td th:text="${persona.nombre}"></td>
+                <td th:text="${persona.edad}"></td>
+                <td><a th:href="@{/delete/{indice}(indice=${iterStat.index})}">Eliminar</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

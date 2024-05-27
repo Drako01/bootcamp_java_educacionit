@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<title>Personas</title>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const token = localStorage.getItem('token');
+    if(token != null) {
+    	fetch('/personas/listar', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + data.token
+            }
+        })		
+    }
+});
+</script>
+</head>
+<body>
+	<h1>Personas</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Nombre</th>
+				<th>Edad</th>
+				<th>Sexo</th>
+			</tr>
+		</thead>
+		<tbody th:each="persona: ${personas}">
+			<tr>
+				<td th:text="${persona.nombre}"></td>
+				<td th:text="${persona.edad}"></td>
+				<td th:text="${persona.sexo}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
